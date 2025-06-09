@@ -170,7 +170,7 @@ const TeamSection = () => {
                 
                 {/* Real photo on hover */}
                 <div className={`absolute inset-0 transition-opacity duration-500 ${activeTeamMember === member.id ? 'opacity-100' : 'opacity-0'}`}>
-                  <div className="w-full h-full rounded-full bg-[#0D1B2A] p-2 border-2 border-[#FFC857] overflow-hidden">
+                  <div className="w-full h-full rounded-full bg-[#0D1B2A] p-2 border-2 border-[#FF4F87] overflow-hidden">
                     <img 
                       src={member.avatar} 
                       alt={member.name} 
