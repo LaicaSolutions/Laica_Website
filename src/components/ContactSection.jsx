@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { FaInstagram, FaLinkedin, FaWhatsapp, FaEnvelope, FaPaperPlane } from 'react-icons/fa';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,46 +60,50 @@ const ContactSection = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      setFormStatus({
-        submitted: true,
-        error: true,
-        message: 'All fields are required!'
-      });
-      return;
-    }
+const formElement = useRef(null); // novo ref para o formulário
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setFormStatus({
-        submitted: true,
-        error: true,
-        message: 'Please enter a valid email address!'
-      });
-      return;
-    }
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    // Form submission would typically go to an API endpoint
-    // For demo purposes, we'll simulate a successful submission
+  if (!formData.name || !formData.email || !formData.message) {
+    setFormStatus({
+      submitted: true,
+      error: true,
+      message: 'All fields are required!'
+    });
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(formData.email)) {
+    setFormStatus({
+      submitted: true,
+      error: true,
+      message: 'Please enter a valid email address!'
+    });
+    return;
+  }
+
+  emailjs.sendForm(
+    'service_063rnqb',
+    'template_t6d6jxo',
+    formElement.current,
+    {
+      publicKey: 'glQUySQF788DIjDPY',
+    }
+  ).then(() => {
     setFormStatus({
       submitted: true,
       error: false,
       message: 'Message sent successfully! We\'ll get back to you soon.'
     });
 
-    // Reset form fields after successful submission
     setFormData({
       name: '',
       email: '',
       message: ''
     });
 
-    // Reset form status after a delay
     setTimeout(() => {
       setFormStatus({
         submitted: false,
@@ -106,7 +111,17 @@ const ContactSection = () => {
         message: ''
       });
     }, 5000);
-  };
+  }).catch((error) => {
+    setFormStatus({
+      submitted: true,
+      error: true,
+      message: 'Something went wrong. Please try again.'
+    });
+    console.error('EmailJS error:', error);
+  });
+};
+
+
 
   const socialLinks = [
     {
@@ -181,7 +196,7 @@ const ContactSection = () => {
           >
             <h3 className="font-baloo text-2xl font-bold text-[#7FDBDA] mb-6">Envie uma mensagem</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formElement} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block font-inter text-[#F9F9F9] mb-2">Nome</label>
                 <input
