@@ -7,6 +7,8 @@ import StarryBackground from './components/StarryBackground';
 import { initSmoothScrolling } from './utils/smoothScroll';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import PreRegisterSection from './components/PreRegisterSection';
+import ConexaoSection from './components/ConexaoSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,12 +34,14 @@ function App() {
       className="relative min-h-screen bg-[#0D1B2A] text-[#F9F9F9] font-inter overflow-hidden"
     >
       <StarryBackground />
-      <Navbar />
+      
       <Router>
+        <Navbar />
         <Routes>
             {/* Rotas existentes */}
             <Route path="/" element={<Home />} />
-            
+            <Route path="/pre-cadastro" element={<PreRegisterSection />} />
+            <Route path='/conexao' element={<ConexaoSection />} />
         </Routes>
       </Router>
       

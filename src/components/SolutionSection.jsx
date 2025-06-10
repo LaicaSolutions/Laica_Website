@@ -2,14 +2,19 @@ import { useEffect, useRef } from 'react';
 import { FaRocket, FaHeart, FaClock } from 'react-icons/fa';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { redirect } from 'next/dist/server/api-utils';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SolutionSection = () => {
+ 
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const cardsRef = useRef(null);
+
+  const navigate = useNavigate(); // <- Para redirecionar para "/pre-cadastro"
+
 useEffect(() => {
     const ctx = gsap.context(() => {
       // Title animation
@@ -59,23 +64,7 @@ useEffect(() => {
   }, []);
   
 
-  const solutionCards = [
-    {
-      icon: <FaRocket className="text-5xl text-[#FFC857]" />,
-      title: "Quick and simple activities",
-      description: "No complex setup or long commitments. Just simple, effective ways to reconnect during your everyday routines."
-    },
-    {
-      icon: <FaHeart className="text-5xl text-[#FFC857]" />,
-      title: "Emotionally engaging and playful",
-      description: "Activities designed to create moments of joy, wonder and connection between parents and children."
-    },
-    {
-      icon: <FaClock className="text-5xl text-[#FFC857]" />,
-      title: "Designed for real-life routines",
-      description: "Seamlessly integrates into your existing family rhythm, turning ordinary moments into opportunities for connection."
-    }
-  ];
+ 
 
   return (
   <div 
@@ -83,7 +72,7 @@ useEffect(() => {
     className="relative min-h-screen py-20 overflow-hidden"
   >
     {/* Nebula background */}
-    <div className="nebula-bg absolute inset-0 bg-gradient-to-r from-[#4B3F72]/30 via-[#7FDBDA]/20 to-[#4B3F72]/30 bg-[length:200%_100%] opacity-50"></div>
+    <div className="nebula-bg absolute inset-0 bg-gradient-to-r from-[#4B3F72]/30 via-[#7FDBDA]/20 to-[#4B3F72]/30 bg-[length:200%_100%] opacity-50  pointer-events-none"></div>
 
     <div className="container mx-auto px-4 z-10">
       {/* Título e introdução */}
@@ -116,12 +105,11 @@ useEffect(() => {
     </p>
 
     {/* Botão para telas médias ou maiores */}
-    <button
-  onClick={() => scrollToSection('solution')}
-  className="hidden md:flex ml-auto bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0D1B2A] font-bold py-3 px-8 rounded transition-all duration-300 font-poppins items-center text-lg"
->
-  <FaRocket className="mr-2 text-xl" /> Decolar
-</button>
+    <button onClick={() =>  navigate('/pre-cadastro')}
+      className="hidden md:flex ml-auto bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0D1B2A] font-bold py-3 px-8 rounded transition-all duration-300 font-poppins items-center text-lg"
+    >
+      <FaRocket className="mr-2 text-xl" /> Decolar
+    </button>
 
   </div>
 
@@ -137,7 +125,7 @@ useEffect(() => {
 
     {/* Botão para telas pequenas (vem depois do GIF) */}
     <button
-      onClick={() => scrollToSection('solution')}
+      onClick={() => navigate('/pre-cadastro')}
       className="mt-6 px-8 py-4 bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0D1B2A] font-bold rounded transition-all duration-300 font-poppins flex items-center text-lg md:hidden"
     >
       <FaRocket className="mr-3 text-xl" /> Decolar
