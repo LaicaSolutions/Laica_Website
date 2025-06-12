@@ -89,15 +89,15 @@ const HeroSection = () => {
           <div className="order-2 md:order-1">
            <h1 
               
-              className="font-baloo text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#F9F9F9] mb-4"
+              className="font-baloo text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#F9F9F9] mb-4 "
             >
-              A missão de reconectar famílias,direto do planeta terra
+              A missão de reconectar famílias, direto do planeta terra
               
             </h1>
        
             <p 
               ref={subheadlineRef}
-              className="font-inter text-xl md:text-2xl text-[#F9F9F9]/80 mb-8"
+              className="font-inter text-xl md:text-2xl text-[#F9F9F9]/80 mb-8 "
             >
               Laica torna pequenas atividades em poderosos momentos de conexão familiar.
             </p>

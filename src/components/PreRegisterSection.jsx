@@ -3,27 +3,19 @@ import { FaInstagram, FaLinkedin, FaWhatsapp, FaEnvelope, FaPaperPlane, FaRocket
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { salvarPreCadastro } from '../services/preCadastroService';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PreRegisterSection = () => {
+
+
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const formRef = useRef(null);
   const navigate = useNavigate(); // <- Para redirecionar para "/conecte"
-  
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  
-  const [formStatus, setFormStatus] = useState({
-    submitted: false,
-    error: false,
-    message: ''
-  });
 
+  //form animation
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Title animation
@@ -56,9 +48,21 @@ const PreRegisterSection = () => {
     return () => ctx.revert();
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    cellphone: '',
+    whatsappConsent: false
+  });
+  
+  const [status, setStatus] = useState('');
+
+  
+
+  const handleChange = e => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
 
@@ -88,14 +92,82 @@ const [error, setError] = useState('');
     }
   };
 
-  const formElement = useRef(null); // novo ref para o formulário
+//input email
+const [emailError, setEmailError] = useState('');
+const validateEmail = () => {
+  if (!formData.email) {
+    setEmailError('Email é obrigatório');
+    return false;
+  }
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  navigate('/conexao')
-  
-  
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(formData.email)) {
+    setEmailError('Formato de e-mail inválido');
+    return false;
+  }
+
+  setEmailError('');
+  return true;
 };
+
+//input name
+const [nameError, setNameError] = useState('');
+const validateName = () => {
+  if (!formData.name.trim()) {
+    setNameError('Nome é obrigatório');
+    return false;
+  }
+
+  setNameError('');
+  return true;
+};
+
+
+
+const formElement = useRef(null); // novo ref para o formulário
+
+const [formError, setFormError] = useState('');
+
+
+const handleSubmit = async e => {
+  e.preventDefault();
+
+  const isValidName = validateName();
+  const isValidPhone = /^\(\d{2}\)\s\d{5}-\d{4}$/.test(phone);
+  const isValidEmail = validateEmail();
+
+  if (!isValidPhone) {
+    setError('Número de telefone inválido. Use o formato (99) 99999-9999');
+  }
+
+  if (!isValidEmail || !isValidPhone || !isValidName) {
+    return;
+  }
+
+  setError('');
+  setStatus('Salvando...');
+  setFormError('');
+
+  try {
+    const dadosParaSalvar = {
+      ...formData,
+      cellphone: phone,
+      whatsappConsent: !!formData.whatsappConsent,
+    };
+    console.log(dadosParaSalvar)
+
+    await salvarPreCadastro(dadosParaSalvar);
+
+    setStatus('Cadastro salvo com sucesso!');
+    navigate('/conexao');
+  } catch (error) {
+    console.error('Erro ao salvar pré-cadastro:', error);
+    setFormError(error.message || 'Erro ao salvar cadastro.');
+    setStatus('');
+  }
+};
+
+
 
 
 
@@ -142,6 +214,7 @@ const handleSubmit = (e) => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
+                        onBlur={validateName}
                         className="w-full bg-[#0D1B2A]/70 border border-[#4B3F72]/50 rounded-lg px-4 py-3 text-[#F9F9F9] focus:outline-none focus:border-[#7FDBDA] transition-all duration-300"
                         placeholder="Seu nome"
                     />
@@ -155,9 +228,11 @@ const handleSubmit = (e) => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
+                        onBlur={validateEmail}
                         className="w-full bg-[#0D1B2A]/70 border border-[#4B3F72]/50 rounded-lg px-4 py-3 text-[#F9F9F9] focus:outline-none focus:border-[#7FDBDA] transition-all duration-300"
                         placeholder="Seu endereço de e-mail"
                     />
+                    {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
                     </div>
 
                     <div>
@@ -192,20 +267,24 @@ const handleSubmit = (e) => {
                     </label>
                     </div>
 
-                    {formStatus.submitted && (
-                    <div className={`p-3 rounded-lg ${formStatus.error ? 'bg-red-500/20 text-red-200' : 'bg-green-500/20 text-green-200'}`}>
-                        {formStatus.message}
-                    </div>
-                    )}
+                   
                     <div className="flex justify-center mt-6">
-
-                        <button
-                    type="submit"
-                    className=" bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0D1B2A] font-bold py-3 px-8 rounded transition-all duration-300 font-poppins flex items-center justify-center space-x-2 w-full md:w-auto"
-                    >
-                    <FaRocket />
-                    <span>Quero Embarcar</span>
-                    </button>
+                        
+                                <button
+                            type="submit"
+                            className=" bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0D1B2A] font-bold py-3 px-8 rounded transition-all duration-300 font-poppins flex items-center justify-center space-x-2 w-full md:w-auto"
+                            >
+                            <FaRocket />
+                            <span>Quero Embarcar</span>
+                            </button>
+                    </div>
+                    <div className="flex justify-center mt-6">
+                        {formError && (
+                            <p className="text-red-500 text-center text-sm font-inter mb-2">
+                              {formError}
+                            </p>
+                          )}
+                              
                     </div>
                     
                 </form>

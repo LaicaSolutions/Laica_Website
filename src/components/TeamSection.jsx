@@ -64,8 +64,8 @@ const TeamSection = () => {
       role: "Co-founder & CMO",
       avatar: "/assets/images/bianca.png",
       astronautAvatar: "/assets/images/astronaut1.png",
-      motto: "Making screen-free moments the best part of a family's day",
-      linkedin: "https://linkedin.com/in/maria-rodriguez",
+      motto: "Cada plano meu começa com uma pergunta: ‘Como fazemos diferente?",
+      linkedin: "",
       email: "bia.alrod@gmail.com"
     },
     {
@@ -74,8 +74,8 @@ const TeamSection = () => {
       role: "Founder & CEO",
       avatar: "/assets/images/gabs.png",
       astronautAvatar: "/assets/images/astronaut2.jpg",
-      motto: "Building technology that brings people closer in the real world",
-      linkedin: "https://linkedin.com/in/james-chen",
+      motto: "Guiando o time pelas estrelas com os pés no chão.",
+      linkedin: "https://www.linkedin.com/in/gabriel-medeiros-alvarenga-b17267166/",
       email: "gabriel.alva@alumni.usp.br"
     },
     {
@@ -84,7 +84,7 @@ const TeamSection = () => {
       role: "Co-founder & CTO",
       avatar: "/assets/images/vitoria.png",
       astronautAvatar: "/assets/images/astronaut3.jpg",
-      motto: "Creating moments of wonder that last a lifetime",
+      motto: "Conectando constelações de informação para criar novos mundos.",
       linkedin: "https://www.linkedin.com/in/vitoria-durazzo/",
       email: "marividurazzo@gmail.com"
     },
@@ -94,7 +94,7 @@ const TeamSection = () => {
       role: "Co-founder & COO",
       avatar: "/assets/images/lucas.png",
       astronautAvatar: "/assets/images/astronaut4.jpg",
-      motto: "Designing joyful experiences for the whole family",
+      motto: "Cada clique, uma experiência — cada pixel, uma emoção.",
       linkedin: "https://www.linkedin.com/in/lucaspierrevisnevschifonseca/",
       email: "lucas.fonseca1032@gmail.com"
     }

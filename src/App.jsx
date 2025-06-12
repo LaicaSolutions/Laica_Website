@@ -9,6 +9,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PreRegisterSection from './components/PreRegisterSection';
 import ConexaoSection from './components/ConexaoSection';
+import EventLandingPage from './components/EventLandingPage';
+import EventLandingPage2 from './components/EventLandingPage2';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,6 +44,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/pre-cadastro" element={<PreRegisterSection />} />
             <Route path='/conexao' element={<ConexaoSection />} />
+            <Route path="/evento/:slug" element={<EventLandingPage />} />
+            <Route path="/evento2/:slug" element={<EventLandingPage2 />} />
+            
         </Routes>
       </Router>
       

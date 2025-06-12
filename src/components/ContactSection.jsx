@@ -155,25 +155,7 @@ const handleSubmit = (e) => {
       ref={sectionRef} 
       className="relative min-h-screen flex items-center py-20 overflow-hidden"
     >
-      {/* Animated comet background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(8)].map((_, i) => (
-          <div 
-            key={i}
-            className="absolute bg-gradient-to-r from-[#7FDBDA] via-[#7FDBDA]/50 to-transparent rounded-full blur-sm animate-comet"
-            style={{
-              width: `${Math.random() * 300 + 100}px`,
-              height: `${Math.random() * 6 + 2}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${-Math.random() * 20 - 10}%`,
-              opacity: Math.random() * 0.5 + 0.1,
-              transform: `rotate(${Math.random() * 20 - 10}deg)`,
-              animationDuration: `${Math.random() * 15 + 30}s`,
-              animationDelay: `${Math.random() * 5}s`
-            }}
-          ></div>
-        ))}
-      </div>
+      
 
       <div className="container mx-auto px-4 z-10">
         <div className="text-center mb-16">

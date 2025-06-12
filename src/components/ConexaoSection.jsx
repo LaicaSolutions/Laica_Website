@@ -127,7 +127,7 @@ const handleSubmit = (e) => {
     {
       platform: "Comunidade do WhatsApp",
       icon: <FaWhatsapp size={24} />,
-      url: "https://wa.me/message/CW7K3AWF66LJL1",
+      url: "https://chat.whatsapp.com/DbrGtVBl2Dl19puhhvVkR5",
       color: "hover:text-[#25D366]"
     },
     {
@@ -187,7 +187,7 @@ Enquanto finalizamos os preparativos, junte-se à nossa comunidade e acompanhe o
             </div>
             
            
-          </div>
+          </div> {/* Social media and contact info */}
         </div>
       </div>
     </div>

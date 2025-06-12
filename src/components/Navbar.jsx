@@ -10,14 +10,14 @@ const Navbar = () => {
   const location = useLocation(); // <- Pega a rota atual
   const navigate = useNavigate(); // <- Para redirecionar para "/"
 
-  const isPreCadastro = location.pathname === '/pre-cadastro' || location.pathname === '/conexao';
+  const isHome = location.pathname === '/' ;
 
   const navItems = [
     { id: 'hero', label: 'Inicio' },
     { id: 'problem', label: 'O Problema' },
     { id: 'solution', label: 'Nossa Solução' },
     { id: 'team', label: 'A Equipe' },
-    //{ id: 'timeline', label: 'Jornada' },
+    { id: 'event', label: 'Nosso Evento' },
     { id: 'contact', label: 'Contato' },
   ];
 
@@ -43,18 +43,26 @@ const Navbar = () => {
 
   // Rola para a seção (na mesma página)
   const scrollToSection = (id) => {
+  if (id === 'event') {
+    navigate('/evento/missao-presenca');
+  } else {
     const element = document.getElementById(id);
     if (element) {
       window.scrollTo({ top: element.offsetTop, behavior: 'smooth' });
     }
-    setMobileMenuOpen(false);
-  };
+  }
+  setMobileMenuOpen(false);
+};
 
   // Vai para a home e depois rola até a seção
   const goToSectionFromOtherPage = (id) => {
+  if (id === 'event') {
+    navigate('/evento/missao-presenca');
+  } else {
     navigate(`/#${id}`);
-    setMobileMenuOpen(false);
-  };
+  }
+  setMobileMenuOpen(false);
+};
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -64,7 +72,7 @@ const Navbar = () => {
         {/* Logo */}
         <div 
           className="flex items-center space-x-4 cursor-pointer" 
-          onClick={() => isPreCadastro  ? navigate('/') : scrollToSection('hero')}
+          onClick={() => !isHome  ? navigate('/') : scrollToSection('hero')}
         >
           <img src="/assets/images/logo.png" alt="Logo" className="w-15 h-10" />
         </div>
@@ -75,7 +83,7 @@ const Navbar = () => {
             <button
               key={item.id}
               onClick={() =>
-                isPreCadastro ? goToSectionFromOtherPage(item.id) : scrollToSection(item.id)
+                !isHome ? goToSectionFromOtherPage(item.id) : scrollToSection(item.id)
               }
               className={`font-inter transition-all duration-300 hover:text-[#FF4F87] ${
                 activeSection === item.id ? 'text-[#FF4F87] font-medium' : 'text-[#F9F9F9]'
@@ -86,7 +94,7 @@ const Navbar = () => {
           ))}
 
           {/* Botão “Se junte à missão” — só aparece se NÃO estiver na rota de pré-cadastro */}
-          {!isPreCadastro && (
+          {isHome && (
             <button 
               onClick={() => scrollToSection('solution')}
               className="bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0D1B2A] font-bold py-2 px-6 rounded transition-all duration-300 font-poppins flex items-center"
@@ -119,7 +127,7 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() =>
-                  isPreCadastro ? goToSectionFromOtherPage(item.id) : scrollToSection(item.id)
+                  !isHome ? goToSectionFromOtherPage(item.id) : scrollToSection(item.id)
                 }
                 className={`font-inter text-left py-2 ${
                   activeSection === item.id ? 'text-[#FF4F87] font-medium' : 'text-[#F9F9F9]'
@@ -129,7 +137,7 @@ const Navbar = () => {
               </button>
             ))}
 
-            {!isPreCadastro && (
+            {isHome && (
               <button 
                 onClick={() => scrollToSection('solution')}
                 className="bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0D1B2A] font-bold py-2 px-6 rounded transition-all duration-300 font-poppins flex items-center w-full justify-center mt-4"
