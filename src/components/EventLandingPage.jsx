@@ -10,7 +10,29 @@ import SectionDivider from './SectionDivider';
 //import kidsImage from "@/assets/kids-fun.png"; // substitua pelo caminho correto da imagem das crianças
 //import momsImage from "@/assets/moms-together.png"; // substitua pelo caminho correto da imagem das mães
 
-
+const eventData = {
+  "missao-presenca": {
+    title: "Missão Presença",
+    subtitle: "Esta na hora de mandarmos a real e quebrar essa visão da mãe 'perfeita'. Um evento voltado para reflexão e fortalecimento do sentimento de conexão. ",
+     date: "2023-12-15",
+    time: "10:00 AM - 2:00 PM",
+    location: "Parque do Ibirapuera, São Paulo – SP",
+    mapLink: "https://maps.google.com/?q=Parque+do+Ibirapuera",
+    description:
+      "Participe de uma jornada intergaláctica com oficinas criativas, rodas de conversa e momentos lúdicos para fortalecer os vínculos familiares.",
+    highlights: [
+      "Oficina de foguetes recicláveis",
+      "Missão de escuta ativa entre pais e filhos",
+      "Brincadeiras cooperativas",
+      "Meditação estelar para crianças",
+    ],
+    benefits: [
+      "Desconecte-se do digital, reconecte-se com o essencial.",
+      "Atividades pensadas para vínculos duradouros.",
+      "Momentos que criam memórias para toda a tripulação.",
+    ],
+  },
+};
 
 
 export default function EventLandingPage() {
