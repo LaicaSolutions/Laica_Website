@@ -10,29 +10,7 @@ import SectionDivider from './SectionDivider';
 //import kidsImage from "@/assets/kids-fun.png"; // substitua pelo caminho correto da imagem das crianças
 //import momsImage from "@/assets/moms-together.png"; // substitua pelo caminho correto da imagem das mães
 
-const eventData = {
-  "missao-presenca": {
-    title: "Missão Presença",
-    subtitle: "Esta na hora de mandarmos a real e quebrar essa visão da mãe 'perfeita'. Um evento voltado para reflexão e fortalecimento do sentimento de conexão. ",
-     date: "2023-12-15",
-    time: "10:00 AM - 2:00 PM",
-    location: "Parque do Ibirapuera, São Paulo – SP",
-    mapLink: "https://maps.google.com/?q=Parque+do+Ibirapuera",
-    description:
-      "Participe de uma jornada intergaláctica com oficinas criativas, rodas de conversa e momentos lúdicos para fortalecer os vínculos familiares.",
-    highlights: [
-      "Oficina de foguetes recicláveis",
-      "Missão de escuta ativa entre pais e filhos",
-      "Brincadeiras cooperativas",
-      "Meditação estelar para crianças",
-    ],
-    benefits: [
-      "Desconecte-se do digital, reconecte-se com o essencial.",
-      "Atividades pensadas para vínculos duradouros.",
-      "Momentos que criam memórias para toda a tripulação.",
-    ],
-  },
-};
+
 
 
 export default function EventLandingPage() {
@@ -97,7 +75,7 @@ export default function EventLandingPage() {
         />
       </div>
       <p className="font-inter text-2xl text-[#F9F9F9]/80 max-w-3xl mx-auto mt-6">
-        Está na hora de mandarmos a real e quebrar a idealização da mãe "perfeita". Um evento voltado para reflexão e fortalecimento do sentimento de conexão.
+        Está na hora de mandar a real e quebrar a ideia de perfeição nas relações familiares. Um evento para refletir, criar conexões reais e fortalecer os vínculos afetivos.
       </p>
     </div>
 
@@ -177,7 +155,7 @@ export default function EventLandingPage() {
             <div className="max-w-3xl text-center bg-white/10 border border-white/20 backdrop-blur-md p-8 rounded-2xl shadow-xl text-white">
               
               <p className="text-lg md:text-xl text-white/90 mb-4 font-inter">
-                As mães também se sentem trocadas pela rotina, pelas cobranças, pela solidão.
+                Os pais também se sentem trocados pela rotina, pelas cobranças, pela solidão.
               </p>
 
               <div className="bg-pink-500 inline-block px-6 py-3 rounded mb-4">
@@ -191,7 +169,7 @@ export default function EventLandingPage() {
               </p>
 
               <p className="text-base md:text-lg text-white/80 font-inter">
-                Nós, mães, não estamos desconectadas, estamos esgotadas. Porque não adianta falar de presença, se a vida exige nossa ausência.
+                Nós, pais, não estamos desconectados, estamos esgotados. Porque não adianta falar de presença, se a vida exige nossa ausência.
               </p>
             </div>
         </section>
@@ -216,7 +194,7 @@ export default function EventLandingPage() {
             O que vai acontecer nesta <span className="text-[#FF4F87]">aventura espacial</span>
           </h2>
        <p className="font-inter text-xl text-[#F9F9F9]/80 max-w-3xl mx-auto">
-          Em um encontro presencial, mães e filhos embarcam em duas jornadas paralelas e imersivas
+          Em um encontro presencial, pais e filhos embarcam em duas jornadas paralelas e imersivas
         </p>
       </div>
 
@@ -252,9 +230,9 @@ export default function EventLandingPage() {
 
             {/* Texto da jornada */}
             <div className="w-full md:w-1/2 text-white">
-              <h3 className="text-3xl font-bold text-pink-400 mb-4">Jornada das Mães</h3>
+              <h3 className="text-3xl font-bold text-pink-400 mb-4">Jornada dos Responsáveis</h3>
               <p className="mb-4 text-lg">
-                Enquanto as crianças exploram o universo, as <span className="font-semibold text-white">mães</span> participam de uma jornada de dentro pra fora, com rodas de conversa acolhedoras mediadas por nossa <span className="text-yellow-300 font-semibold">educadora parental</span>.
+                Enquanto as crianças exploram o universo, os adultos responsáveis embarcam em uma jornada de dentro pra fora, com rodas de conversa acolhedoras mediadas por nossa <span className='text-yellow-300 font-semibold'>educadora parental</span>.
               </p>
               <p className="text-lg">
                 Serão <span className="text-yellow-300 font-semibold">vivências terapêuticas</span> e reflexões sobre culpa, conexão e presença real.
@@ -275,9 +253,9 @@ export default function EventLandingPage() {
 
             {/* Texto da jornada final */}
             <div className="w-full md:w-1/2 text-white">
-              <h3 className="text-3xl font-bold text-blue-300 mb-4">Momento Conexão Mãe e Filho</h3>
+              <h3 className="text-3xl font-bold text-blue-300 mb-4">Momento Especial de Conexão com as Crianças</h3>
               <p className="text-lg">
-                No final: <span className="font-semibold text-white">mãe e filho</span> se reencontram transformados, com um exercício conjunto de <span className="text-pink-400 font-semibold">reconexão</span> para selar a jornada.
+                No final: <span className="font-semibold text-white">responsável e criança</span> se reencontram transformados, com um exercício conjunto de <span className="text-pink-400 font-semibold">reconexão</span> para selar a jornada.
               </p>
             </div>
           </div>
@@ -287,8 +265,62 @@ export default function EventLandingPage() {
     </div>
   </section> {/* Fim da Sessão: Jornadas */}
   
-   {/* ==== Divisor de sessão ==== */}
-  <SectionDivider type="wavy" />
+  
+  {/* ==== Sessão: Nossa convidada ==== */}
+  <section id="missao" className="relative  py-20 overflow-hidden">
+    {/* ==== Divisor de sessão ==== */}
+    <SectionDivider type="wavy" />
+  
+    {/* Nebula de fundo novamente */}
+    <div className="nebula-bg absolute inset-0 bg-gradient-to-r from-[#4B3F72]/30 via-[#7FDBDA]/20 to-[#4B3F72]/30 bg-[length:200%_100%] opacity-50  pointer-events-none"></div>
+    {/* ==== Conteúdo da sessão ==== */}
+    <div className="container mx-auto px-4 z-10">
+      <div className="text-center mb-4 ">
+          <h2 
+            className="font-baloo text-3xl md:text-4xl lg:text-5xl font-bold text-[#F9F9F9] mb-6"
+          >
+            Conheça nossa <span className="text-pink-400">educadora parental</span>
+          </h2>
+      
+      </div>
+          {/* Cartão da educadora */}
+        <div className="bg-gradient-to-br from-[#4B3F72]/20 to-[#0D1B2A]/80 backdrop-blur-md border border-[#7FDBDA]/30 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8 shadow-xl">
+
+          {/* Foto da educadora */}
+          <div className="w-full md:w-1/3 flex justify-center">
+            <img
+              src="/assets/images/bianca.png" // Ajuste o caminho conforme o seu projeto
+              alt="Educadora Parental"
+              className="rounded-full w-48 h-48 object-cover border-4 border-[#7FDBDA]/40 shadow-md"
+            />
+          </div>
+
+          {/* Texto de apresentação */}
+          <div className="w-full md:w-2/3 text-left">
+            <h3 className="text-2xl font-bold text-[#F9F9F9] mb-2">Bianca Rodrigues</h3>
+            <p className="text-[#F9F9F9]/80 mb-4">
+              Educadora parental com vasta experiência em desenvolvimento infantil, relações familiares e comunicação afetiva. Ela conduzirá momentos especiais durante o evento, oferecendo apoio, escuta e reflexões que ajudam a fortalecer os laços entre adultos e crianças.
+            </p>
+            <p className="text-[#F9F9F9]/80 italic mb-4">"Educar não é apenas moldar atitudes, mas nutrir vínculos que sustentam o desenvolvimento emocional."</p>
+
+            {/* Redes sociais */}
+            <div className="flex items-center gap-4 mt-2">
+              <a
+                href="https://www.instagram.com/biarodriguesterapeuta/" // Coloque o link real do Instagram dela
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink-400 hover:text-pink-500 flex items-center gap-2 transition-colors duration-300"
+              >
+                <FaInstagram size={30} />
+                <span >Conheça mais sobre a Bianca</span>
+              </a>
+            </div>
+          </div>
+
+        </div>{/* Fim do cartão da educadora */}
+
+    </div>{/* Fim do conteudo */}
+ </section> {/** Fim da Sessão: Nossa convidada */}
 
   {/* ==== Seção: Coordenação do Evento ==== */}
   <section id="event-info" className="py-20 relative">
@@ -427,7 +459,7 @@ crianças entre 6 e 10 anos</p>
           </div>
         </div>
       </div>
-    </section>  {/* Fim da Sessão: Coordenação do Evento */}
+  </section>  {/* Fim da Sessão: Coordenação do Evento */}
     
     {/* Sessão: Compra do ingresso */}
     <section id ="ingresso" className=" px-6 md:px-12 mb-12">
@@ -544,12 +576,13 @@ crianças entre 6 e 10 anos</p>
   </section>{/* Fim da Sessão: Aliados Estelares */}
 
   {/* Sessão: Comunidade do Evento */}      
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 mt-12">
+  <section className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 mt-12">
   {/* Conteúdo nossa comunidade */}
   <div className="bg-gradient-to-br from-[#0D1B2A]/90 to-[#4B3F72]/20 backdrop-blur-sm border border-[#7FDBDA]/30 rounded-xl p-8 hover:border-[#7FDBDA]/50 transition-all duration-300">
     <h3 className="font-baloo text-2xl font-bold text-[#7FDBDA] mb-6 text-center">
-      Notícias, dicas e muito mais, se junte a nossa comunidade
+      Notícias, dicas e muito mais, se junte à nossa comunidade
     </h3>
+
     <div className="grid grid-cols-2 gap-6 mb-6">
       {socialLinks.map((social, index) => (
         <a
@@ -557,7 +590,7 @@ crianças entre 6 e 10 anos</p>
           href={social.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-col items-center bg-[#0D1B2A]/50 p-4 rounded-lg hover:bg-[#0D1B2A]/70 transition-all duration-300"
+          className="flex flex-col items-center bg-[#0D1B2A]/50 p-4 rounded-lg hover:bg-[#0D1B2A]/70 transition-all duration-300 hover:animate-pulse"
         >
           <div className={`text-[#7FDBDA] ${social.color} transition-colors duration-300 mb-2`}>
             {social.icon}
@@ -567,6 +600,8 @@ crianças entre 6 e 10 anos</p>
       ))}
     </div>
   </div>
+
+
 
   {/* Conteúdo compartilhe */}
   <div className="bg-gradient-to-br from-[#0D1B2A]/90 to-[#4B3F72]/20 backdrop-blur-sm border border-[#7FDBDA]/30 rounded-xl p-8 hover:border-[#7FDBDA]/50 transition-all duration-300">

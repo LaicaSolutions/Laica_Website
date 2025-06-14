@@ -11,6 +11,8 @@ import PreRegisterSection from './components/PreRegisterSection';
 import ConexaoSection from './components/ConexaoSection';
 import EventLandingPage from './components/EventLandingPage';
 import EventLandingPage2 from './components/EventLandingPage2';
+import CommunityPopup from './components/CommunityPopup';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +41,7 @@ function App() {
       
       <Router>
         <Navbar />
+        <CommunityPopup />
         <Routes>
             {/* Rotas existentes */}
             <Route path="/" element={<Home />} />
