@@ -1,11 +1,11 @@
 // src/pages/Home.jsx
 import React from 'react';
-import HeroSection from './HeroSection';
-import ProblemSection from './ProblemSection';
-import SolutionSection from './SolutionSection';
-import TeamSection from './TeamSection';
+import HeroSection from '../sections/HeroSection';
+import ProblemSection from '../sections/ProblemSection';
+import SolutionSection from '../sections/SolutionSection';
+import TeamSection from '../sections/TeamSection';
 import TimelineSection from './TimelineSection';
-import ContactSection from './ContactSection';
+import ContactSection from '../sections/ContactSection';
 import SectionDivider from './SectionDivider';
 const Home = () => {
   return (

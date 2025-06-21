@@ -399,7 +399,7 @@ export default function EventLandingPage() {
                   <div>
                     <h3 className="text-xl font-medium text-indigo-200 mb-2">Publico-alvo</h3>
                     <p className="text-white">Para mães, pais, tutores e
-crianças entre 6 e 10 anos</p>
+crianças entre 5 e 10 anos</p>
                   </div>
                 </div>
               </div>

@@ -1,17 +1,16 @@
 import { useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 import Navbar from './components/Navbar';
-import Home from './components/Home';
+
 
 import StarryBackground from './components/StarryBackground';
 import { initSmoothScrolling } from './utils/smoothScroll';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import PreRegisterSection from './components/PreRegisterSection';
-import ConexaoSection from './components/ConexaoSection';
-import EventLandingPage from './components/EventLandingPage';
-import EventLandingPage2 from './components/EventLandingPage2';
+
 import CommunityPopup from './components/CommunityPopup';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './routes';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -39,19 +38,12 @@ function App() {
     >
       <StarryBackground />
       
-      <Router>
-        <Navbar />
-        <CommunityPopup />
-        <Routes>
-            {/* Rotas existentes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/pre-cadastro" element={<PreRegisterSection />} />
-            <Route path='/conexao' element={<ConexaoSection />} />
-            <Route path="/evento/:slug" element={<EventLandingPage />} />
-            <Route path="/evento2/:slug" element={<EventLandingPage2 />} />
-            
-        </Routes>
-      </Router>
+      
+      <BrowserRouter>
+      <Navbar />
+      <CommunityPopup />
+        <AppRoutes />
+      </BrowserRouter>
       
       
 

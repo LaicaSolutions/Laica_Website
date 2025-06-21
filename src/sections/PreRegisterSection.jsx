@@ -13,7 +13,25 @@ const PreRegisterSection = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const formRef = useRef(null);
-  const navigate = useNavigate(); // <- Para redirecionar para "/conecte"
+  const [success, setSuccess] = useState(false);
+
+   const socialLinks = [
+    {
+      platform: "Comunidade do WhatsApp",
+      icon: <FaWhatsapp size={24} />,
+      url: "https://chat.whatsapp.com/DbrGtVBl2Dl19puhhvVkR5",
+      color: "hover:text-[#25D366]"
+    },
+    {
+      platform: "Siga no Instagram",
+      icon: <FaInstagram size={24} />,
+      url: "https://instagram.com/laica.space",
+      color: "hover:text-[#E1306C]"
+    },
+    
+  ];
+
+  //const navigate = useNavigate(); // <- Para redirecionar para "/conecte"
 
   //form animation
   useEffect(() => {
@@ -159,7 +177,7 @@ const handleSubmit = async e => {
     await salvarPreCadastro(dadosParaSalvar);
 
     setStatus('Cadastro salvo com sucesso!');
-    navigate('/conexao');
+    setSuccess(true);  // <-- Marca como sucesso
   } catch (error) {
     console.error('Erro ao salvar pré-cadastro:', error);
     setFormError(error.message || 'Erro ao salvar cadastro.');
@@ -181,8 +199,50 @@ const handleSubmit = async e => {
       className="relative min-h-screen flex items-center py-20 overflow-hidden"
     >
       
-
       <div className="container mx-auto px-4 z-10">
+        {success ? ( <>
+          <div className="text-center mb-16">
+          <h2 
+          
+            className="font-baloo text-3xl md:text-4xl lg:text-5xl font-bold text-[#F9F9F9] mb-6"
+          >
+            Missão Iniciada com <span className="text-[#FF4F87]">sucesso</span>
+          </h2>
+          <p className="font-inter text-xl text-[#F9F9F9]/80 max-w-3xl mx-auto">
+            Você agora faz parte da tripulação da Laica.
+            Enquanto finalizamos os preparativos, junte-se à nossa comunidade e acompanhe os bastidores da missão:
+          </p>
+        </div>
+
+        <div className="flex items-center justify-center px-4">
+          
+          
+          {/* Social media and contact info */}
+          <div className="max-w-2xl w-full">
+            <div className="bg-gradient-to-br from-[#0D1B2A]/90 to-[#4B3F72]/20 backdrop-blur-sm border border-[#7FDBDA]/30 rounded-xl p-8 hover:border-[#7FDBDA]/50 transition-all duration-300">
+              <h3 className="font-baloo text-2xl font-bold text-[#7FDBDA] mb-6 text-center">Entre em nossa comunidade</h3>
+              
+              <div className="grid grid-cols-2 gap-6 mb-6">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center bg-[#0D1B2A]/50 p-4 rounded-lg hover:bg-[#0D1B2A]/70 transition-all duration-300"
+                  >
+                    <div className={`text-[#7FDBDA] ${social.color} transition-colors duration-300 mb-2`}>
+                      {social.icon}
+                    </div>
+                    <span className="font-inter text-[#F9F9F9]">{social.platform}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+            
+           
+          </div> {/* Social media and contact info */}
+        </div></>): (<>
         <div className="text-center mt-10 mb-10">
           <h2 
             ref={titleRef}
@@ -290,7 +350,8 @@ const handleSubmit = async e => {
                 </form>
                 </div>
             </div>
-            </div>
+            </div></>
+          )}
 
       </div>
     </div>
