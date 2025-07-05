@@ -1,3 +1,5 @@
+import { Component } from "lucide-react";
+
 export const activities = [
   {
     id: '1',
@@ -7,6 +9,8 @@ export const activities = [
     color: 'from-blue-400 to-cyan-500',
     description: 'Desenhos para pintar',
     missionScript: 'Desenhos para pintar',
+    audioSrc: null,
+    componentType: 'drawing',
   },
   {
     id: '2',
@@ -16,6 +20,8 @@ export const activities = [
     color: 'from-yellow-400 to-amber-500',
     description: 'Procure na casa ou onde estiver algo (descrição do que tem que ser encontrado)',
     missionScript: 'Procure na casa ou onde estiver algo (descrição do que tem que ser encontrado)',
+    audioSrc: null,
+    componentType: 'drawing',
   },
   {
     id: '3',
@@ -25,6 +31,8 @@ export const activities = [
     color: 'from-yellow-400 to-amber-500',
     description: 'Tente imitar o ritmo',
     missionScript: 'Tente imitar o ritmo',
+    audioSrc: null,
+    componentType: 'drawing',
   },
   {
     id: '4',
@@ -34,6 +42,8 @@ export const activities = [
     color: 'from-blue-400 to-cyan-500',
     description: 'Vai ter uma frase do que a laica precisa para concluir a missão e a criança vai ter que desenhar isso',
     missionScript: 'Vai ter uma frase do que a laica precisa para concluir a missão e a criança vai ter que desenhar isso',
+    audioSrc: null,
+    componentType: 'phrase',
   },
   {
     id: '5',
@@ -43,6 +53,8 @@ export const activities = [
     color: 'from-red-600 to-pink-500',
     description: 'Observe o ambiente. Sente-se completamente imóvel e em silêncio por 5 minutos. Depois, desenhe ou descreva o que você notou.',
     missionScript: 'Observe o ambiente. Sente-se completamente imóvel e em silêncio por 5 minutos. Depois, desenhe ou descreva o que você notou.',
+    audioSrc: null,
+    componentType: 'drawing',
   },
   {
     id: '6',
@@ -52,6 +64,8 @@ export const activities = [
     color: 'from-red-600 to-pink-500',
     description: 'A criança vai ter que refletir o que te torna calma e criar o kit da emergência, o espaço para ela se acalmar',
     missionScript: 'A criança vai ter que refletir o que te torna calma e criar o kit da emergência, o espaço para ela se acalmar',
+    audioSrc: null,
+    componentType: 'phrase',
   },
   {
     id: '7',
@@ -61,6 +75,8 @@ export const activities = [
     color: 'from-blue-400 to-cyan-500',
     description: 'Cronômetro de X minutos, cada um terá 30 segundos para fazer uma parte do desenho e depois o outro continua',
     missionScript: 'Cronômetro de X minutos, cada um terá 30 segundos para fazer uma parte do desenho e depois o outro continua',
+     audioSrc: null,
+    componentType: 'phrase',
   },
   {
     id: '8',
@@ -70,6 +86,8 @@ export const activities = [
     color: 'from-blue-400 to-cyan-500',
     description: 'Diversas perguntas do tipo: "Se você fosse...qual seria?", "Você prefere..."',
     missionScript: 'Diversas perguntas do tipo: "Se você fosse...qual seria?", "Você prefere..."',
+     audioSrc: null,
+    componentType: 'phrase',
   },
   {
     id: '9',
@@ -79,6 +97,8 @@ export const activities = [
     color: 'from-yellow-400 to-amber-500',
     description: 'Um começa uma história com 3 palavras, o outro continua com mais 3 palavras, e assim vai até formar uma história maluca!',
     missionScript: 'Exemplo: “Era uma vez…” → “um gato espacial…” → “que voava alto…”',
+     audioSrc: null,
+    componentType: 'phrase',
   },
   {
     id: '10',
@@ -88,6 +108,8 @@ export const activities = [
     color: 'from-yellow-400 to-amber-500',
     description: 'Exercício de atuação: a criança pergunta e o pai responde como um [algum personagem] responderia',
     missionScript: 'Exercício de atuação: a criança pergunta e o pai responde como um [algum personagem] responderia',
+    audioSrc: null,
+    componentType: null,
   },
   {
     id: '11',
@@ -97,6 +119,8 @@ export const activities = [
     color: 'from-red-600 to-pink-500',
     description: 'Crie seu universo junto. Terá várias perguntas para serem respondidas juntas e definidas',
     missionScript: 'Crie seu universo junto. Terá várias perguntas para serem respondidas juntas e definidas',
+    audioSrc: null,
+    componentType: null,
   },
   {
     id: '12',
@@ -106,5 +130,7 @@ export const activities = [
     color: 'from-red-600 to-pink-500',
     description: 'Sentem juntos e planejem seu momento em família. Vai ter perguntas para orientar o planejamento',
     missionScript: 'Sentem juntos e planejem seu momento em família. Vai ter perguntas para orientar o planejamento',
+    audioSrc: null,
+    componentType: 'drawing',
   },
 ]

@@ -16,6 +16,8 @@ import {
   Users,
   ArrowLeft,
 } from 'lucide-react';
+// Importa o renderizador de componentes dinâmicos
+import ActivityComponentRenderer from './activity-components/ActivityComponentRenderer';
 
 // Componente principal da página de detalhe da atividade
 const ActivityDetail = () => {
@@ -216,9 +218,29 @@ const ActivityDetail = () => {
           />
         </div>
 
+        {/* Seção para o Componente de Atividade Dinâmico */}
+        {/* Esta seção só será renderizada se a atividade tiver um 'componentType' definido nos dados. */}
+        {activity.componentType && (
+          <div className="mt-8">
+            <div className="flex items-center mb-4">
+              <div className="h-1 flex-grow bg-gradient-to-r from-primary/0 to-primary/50 rounded-full"></div>
+              <h2 className="text-2xl font-bold text-white flex items-center mx-4 whitespace-nowrap">
+                Ferramenta da Missão
+              </h2>
+              <div className="h-1 flex-grow bg-gradient-to-l from-primary/0 to-primary/50 rounded-full"></div>
+            </div>
+            <div className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+              {/* O ActivityComponentRenderer decide qual componente mostrar com base no tipo da atividade */}
+              <ActivityComponentRenderer componentType={activity.componentType} />
+            </div>
+          </div>
+        )}
+
         {/* Efeitos decorativos */}
         <div className="absolute top-5 right-5 w-24 h-24 rounded-full bg-primary/5 blur-3xl -z-10"></div>
         <div className="absolute bottom-5 left-5 w-32 h-32 rounded-full bg-accent/5 blur-3xl -z-10"></div>
+
+        
       </motion.div>
     </div>
   );
