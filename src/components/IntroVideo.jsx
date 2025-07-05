@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { X } from 'lucide-react';
+import { SpeedDialAction } from '@mui/material';
 
 export function IntroVideo() {
   const [showVideo, setShowVideo] = useState(false);
@@ -45,7 +46,7 @@ export function IntroVideo() {
             onClick={handleClose}
             className="text-white bg-black/20 hover:bg-white/10 hover:text-white"
           >
-            Skip <X className="ml-2 h-5 w-5" />
+            Pular <X className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </div>

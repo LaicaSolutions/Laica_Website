@@ -231,7 +231,7 @@ const ActivityDetail = () => {
             </div>
             <div className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-xl p-6">
               {/* O ActivityComponentRenderer decide qual componente mostrar com base no tipo da atividade */}
-              <ActivityComponentRenderer componentType={activity.componentType} />
+              <ActivityComponentRenderer componentType={activity.componentType} activity={activity} />
             </div>
           </div>
         )}

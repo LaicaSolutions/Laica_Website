@@ -3,11 +3,13 @@ import React from 'react';
 // 1. Importe todos os componentes de atividade que você criar.
 import DrawingCanvas from './DrawingCanvas';
 import RandomPhraseGenerator from './RandomPhraseGenerator';
+import YouTubePlaylist from './YouTubePlaylist';
 
 // 2. Crie o mapeamento: a chave é o `componentType` do seu dataset, o valor é o componente importado.
 const componentMap = {
   drawing: DrawingCanvas,
   phrase: RandomPhraseGenerator,
+  video: YouTubePlaylist,
   // Adicione outros tipos de componentes aqui conforme for criando
 };
 
