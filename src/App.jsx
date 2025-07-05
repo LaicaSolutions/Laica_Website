@@ -41,7 +41,7 @@ function App() {
       
       <BrowserRouter>
       <Navbar />
-      <CommunityPopup />
+      
         <AppRoutes />
       </BrowserRouter>
       

@@ -7,6 +7,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SectionDivider from './SectionDivider';
+import CommunityPopup from './CommunityPopup';
+
 //import kidsImage from "@/assets/kids-fun.png"; // substitua pelo caminho correto da imagem das crianças
 //import momsImage from "@/assets/moms-together.png"; // substitua pelo caminho correto da imagem das mães
 
@@ -84,6 +86,7 @@ export default function EventLandingPage() {
 
   return (
     <div className="relative min-h-screen py-20 overflow-hidden">
+      <CommunityPopup />
   {/* ==== Nebulosa de fundo ==== */}
   
   {/* ==== Seção: Título e introdução ==== */}

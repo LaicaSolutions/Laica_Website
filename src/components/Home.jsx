@@ -7,9 +7,11 @@ import TeamSection from '../sections/TeamSection';
 import TimelineSection from './TimelineSection';
 import ContactSection from '../sections/ContactSection';
 import SectionDivider from './SectionDivider';
+import CommunityPopup from './CommunityPopup';
 const Home = () => {
   return (
     <main className="relative z-10">
+      <CommunityPopup />
         <section id="hero" className="min-h-screen">
           <HeroSection />
         </section>

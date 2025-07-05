@@ -10,7 +10,9 @@ const Navbar = () => {
   const location = useLocation(); // <- Pega a rota atual
   const navigate = useNavigate(); // <- Para redirecionar para "/"
 
+  const isAtividades = location.pathname.startsWith('/atividades');
   const isHome = location.pathname === '/' ;
+  const isEvent = location.pathname === '/evento/missao-presenca';
 
   const navItems = [
     { id: 'hero', label: 'Inicio' },
@@ -19,6 +21,12 @@ const Navbar = () => {
     { id: 'team', label: 'A Equipe' },
     { id: 'event', label: 'Nosso Evento' },
     { id: 'contact', label: 'Contato' },
+
+  ];
+
+  const navItemsAtividades = [
+    {id: 'atividadesInicio', label: 'Inicio'},
+    {id: 'atividadesTv', label: 'TV'}
   ];
 
   useEffect(() => {
@@ -54,11 +62,16 @@ const Navbar = () => {
   setMobileMenuOpen(false);
 };
 
+
   // Vai para a home e depois rola até a seção
   const goToSectionFromOtherPage = (id) => {
   if (id === 'event') {
     navigate('/evento/missao-presenca');
-  } else {
+  }else if (id === 'atividadesInicio') {
+    navigate('/atividades');
+  }else if (id === 'atividadesTv') {
+    navigate('/atividades/tv');
+  }  else {
     navigate(`/#${id}`);
   }
   setMobileMenuOpen(false);
@@ -79,7 +92,8 @@ const Navbar = () => {
 
         {/* Menu Desktop */}
         <div className="hidden md:flex space-x-6 items-center">
-          {navItems.map((item) => (
+          {(isHome || isEvent ? navItems : navItemsAtividades).map((item) => (
+          
             <button
               key={item.id}
               onClick={() =>
@@ -93,13 +107,13 @@ const Navbar = () => {
             </button>
           ))}
 
-          {/* Botão “Se junte à missão” — só aparece se NÃO estiver na rota de pré-cadastro */}
+          {/* Botão “Se junte à missão” — só aparece se a pessoa estiver na rota raiz */}
           {isHome && (
             <button 
-              onClick={() => scrollToSection('solution')}
+              onClick={() => navigate('/atividades')}
               className="bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0D1B2A] font-bold py-2 px-6 rounded transition-all duration-300 font-poppins flex items-center"
             >
-              <FaRocket className="mr-2" /> Se junte a missão
+              <FaRocket className="mr-2" /> Decolar
             </button>
           )}
         </div>
@@ -139,10 +153,10 @@ const Navbar = () => {
 
             {isHome && (
               <button 
-                onClick={() => scrollToSection('solution')}
+                onClick={() => navigate('/atividades')}
                 className="bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0D1B2A] font-bold py-2 px-6 rounded transition-all duration-300 font-poppins flex items-center w-full justify-center mt-4"
               >
-                <FaRocket className="mr-2" /> Se junte a missão
+                <FaRocket className="mr-2" /> Decolar
               </button>
             )}
           </div>
