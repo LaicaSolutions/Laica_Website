@@ -21,7 +21,7 @@ export const activities = [
     description: 'Procure na casa ou onde estiver algo (descrição do que tem que ser encontrado)',
     missionScript: 'Procure na casa ou onde estiver algo (descrição do que tem que ser encontrado)',
     audioSrc: null,
-    componentType: 'drawing',
+    componentType: 'spaceHunt',
   },
   {
     id: '3',
