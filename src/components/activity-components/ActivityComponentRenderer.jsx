@@ -5,6 +5,10 @@ import DrawingCanvas from './DrawingCanvas';
 import RandomPhraseGenerator from './RandomPhraseGenerator';
 import YouTubePlaylist from './YouTubePlaylist';
 import SpaceHuntBingo from './SpaceBingo/SpaceHuntBingo';
+import PhotoComponent from './PhotoComponent';
+import FourHandsDrawing from './FourHandsDrawing';
+import CrewQuestions from './CrewQuestions';
+import IntergalaticInterview from './IntergalaticInterview';
 
 // 2. Crie o mapeamento: a chave é o `componentType` do seu dataset, o valor é o componente importado.
 const componentMap = {
@@ -12,6 +16,10 @@ const componentMap = {
   phrase: RandomPhraseGenerator,
   video: YouTubePlaylist,
   spaceHunt: SpaceHuntBingo,
+  photoShare: PhotoComponent,
+  fourHandsDrawing: FourHandsDrawing,
+  crewQuestions: CrewQuestions,
+  character: IntergalaticInterview,
   // Adicione outros tipos de componentes aqui conforme for criando
 };
 
