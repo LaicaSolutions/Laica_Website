@@ -11,6 +11,7 @@ export const activities = [
     missionScript: 'Desenhos para pintar',
     audioSrc: null,
     componentType: 'drawing',
+    
   },
   {
     id: '2',
@@ -22,6 +23,7 @@ export const activities = [
     missionScript: 'Procure na casa ou onde estiver algo (descrição do que tem que ser encontrado)',
     audioSrc: null,
     componentType: 'spaceHunt',
+   
   },
   {
     id: '3',
@@ -55,7 +57,8 @@ export const activities = [
     description: 'Observe o ambiente. Sente-se completamente imóvel e em silêncio por 5 minutos. Depois, desenhe ou descreva o que você notou.',
     missionScript: 'Observe o ambiente. Sente-se completamente imóvel e em silêncio por 5 minutos. Depois, desenhe ou descreva o que você notou.',
     audioSrc: null,
-    componentType: 'drawing',
+    componentType: 'video',
+    videoId: '0nsXeO-PilY',
   },
   {
     id: '6',
@@ -66,7 +69,8 @@ export const activities = [
     description: 'A criança vai ter que refletir o que te torna calma e criar o kit da emergência, o espaço para ela se acalmar',
     missionScript: 'A criança vai ter que refletir o que te torna calma e criar o kit da emergência, o espaço para ela se acalmar',
     audioSrc: null,
-    componentType: 'photoShare',
+    componentType: 'video',
+    videoId: 'b3KMNIowUSo',
   },
   {
     id: '7',
@@ -89,7 +93,16 @@ export const activities = [
     missionScript: 'Respondam às perguntas para se conhecerem melhor!',
     audioSrc: null,
     componentType: 'crewQuestions',
-    
+    questions: [
+        "Se você pudesse ser um animal, qual seria e por quê?",
+        "Qual superpoder você escolheria: voar ou ficar invisível?",
+        "Se a nossa família fosse uma banda, que instrumento cada um tocaria?",
+        "Qual é a comida mais estranha que você já comeu?",
+        "Se você pudesse criar uma regra para o mundo, qual seria?",
+        "Qual é a sua lembrança favorita que temos juntos?",
+        "Você prefere viver no fundo do mar ou no espaço?",
+    ],
+   
   },
   {
     id: '9',
@@ -100,7 +113,13 @@ export const activities = [
     description: 'Um começa uma história com 3 palavras, o outro continua com mais 3 palavras, e assim vai até formar uma história maluca!',
     missionScript: 'Exemplo: “Era uma vez…” → “um gato espacial…” → “que voava alto…”',
      audioSrc: null,
-    componentType: 'phrase',
+    componentType: 'crazyStory',
+    sharePrompt: {
+      title : 'Compartilhe com a Galáxia da Laica!',
+      description : 'Um desenho ou audio da historia criada! Conte sua experiência e inspire outras famílias!',
+      note : 'As histórias mais criativas podem aparecer na Galeria Galáctica !',
+      whatsappMessage : 'Olha só o que criamos com a Laica!',
+    }
   },
   {
     id: '10',
@@ -122,7 +141,7 @@ export const activities = [
     description: 'Crie seu universo junto. Terá várias perguntas para serem respondidas juntas e definidas',
     missionScript: 'Crie seu universo junto. Terá várias perguntas para serem respondidas juntas e definidas',
     audioSrc: null,
-    componentType: null,
+    componentType: 'buildWorld',
   },
   {
     id: '12',
@@ -133,6 +152,6 @@ export const activities = [
     description: 'Sentem juntos e planejem seu momento em família. Vai ter perguntas para orientar o planejamento',
     missionScript: 'Sentem juntos e planejem seu momento em família. Vai ter perguntas para orientar o planejamento',
     audioSrc: null,
-    componentType: 'drawing',
+    componentType: 'makingPlan',
   },
 ]

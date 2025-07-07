@@ -67,21 +67,31 @@ const drawingPrompts = [
   "Um planeta onde as árvores contam histórias"
 ];
 
+ const shareText = {
+      title: 'Obra de Arte em Dupla!',
+      description: 'Vejam só a incrível criação que vocês fizeram juntos! Compartilhem e inspirem outras duplas.',
+      note: 'As criações mais sincronizadas podem aparecer na nossa Galeria Galáctica!',
+      whatsappMessage: 'Fizemos a atividade "Linhas que se Encontram" da Laica e o resultado foi demais!',
+    }
 
-const FourHandsDrawing = () => {
+const FourHandsDrawing = ({ activity }) => {
   
 
   return (
-    <>
+    <div className="relative">
+      {/* Efeito de grade no fundo */}
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:2rem_2rem] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
+
+      {/* Conteúdo da atividade */}
+      <div className="relative z-10">
         <div className="mb-4">
             <RandomPhraseGenerator phrases={drawingPrompts}/>
         </div>
-        
-        <LaicaTimer />
-
-    </>
+          
+        <LaicaTimer mode="countdown" initialTime={300} sharePrompt={shareText} />
+      </div>
+    </div>
   );
 };
 
 export default FourHandsDrawing;
-

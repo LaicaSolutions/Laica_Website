@@ -17,12 +17,12 @@ export default function HomeAtividades() {
       <IntroVideo />
       <main className="min-h-screen p-4 sm:p-8">
         <div className="container mx-auto">
-          <header className="text-center my-8 md:my-16">
+          <header className="text-center mt-16 mb-8 md:mt-24 md:mb-16">
             <h1
               style={{ animationDelay: '0.2s' }}
               className="text-4xl md:text-6xl font-baloo font-bold text-primary animate-fade-in-down"
             >
-              Coleção de Atividades da Laica
+              Coleção de Atividades 
             </h1>
             <p
               style={{ animationDelay: '0.4s' }}
@@ -34,29 +34,36 @@ export default function HomeAtividades() {
 
           <Tabs defaultValue="all" className="w-full">
             <div className="flex justify-center mb-8">
-                <TabsList className="bg-black/30 backdrop-blur border border-white/10">
+                <TabsList className="bg-black/30 backdrop-blur border border-white/10 ">
                   <TabsTrigger 
                     value="all"
                     onClick={() => setFilter('all')}
                     className="data-[state=active]:bg-pink-500"
                   >
-                    Todas as Atividades
+                    <div className="flex flex-col items-center justify-center md:flex-row md:gap-1">
+                      <span>Todas</span>
+                      <span>as Atividades</span>
+                    </div>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="solo" 
                     onClick={() => setFilter('Solo')}
                     className="data-[state=active]:bg-pink-500"
                   >
-                    <User className="mr-1 h-6 w-6" />
-                    Missões Solos
+                    <div className="flex flex-col items-center justify-center md:flex-row">
+                      <User className="h-6 w-6 mb-1 md:mb-0 md:mr-2" />
+                      <span>Missões Solos</span>
+                    </div>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="duo" 
                     onClick={() => setFilter('Duo')}
                     className="data-[state=active]:bg-pink-500"
                   >
-                    <Users className="mr-1 h-6 w-6" />
-                    Missões Duo
+                    <div className="flex flex-col items-center justify-center md:flex-row">
+                      <Users className="h-6 w-6 mb-1 md:mb-0 md:mr-2" />
+                      <span>Missões Duo</span>
+                    </div>
                   </TabsTrigger>
                 </TabsList>
             </div>

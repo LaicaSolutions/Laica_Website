@@ -1,31 +1,78 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { usePausableTimer } from '../../hooks/usePausableTimer';
+import { Play, Pause, RefreshCw } from 'lucide-react';
+import { SharePrompt } from './SharePrompt';
 
-// Ícones para os botões
-const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
-const PauseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
-const RefreshIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h5M20 20v-5h-5M4 4l1.5 1.5A9 9 0 0120.5 13M20 20l-1.5-1.5A9 9 0 003.5 11" /></svg>;
-
-const LaicaTimer = () => {
+const LaicaTimer = ({ mode = 'countdown', initialTime = 300, sharePrompt }) => {
+  // --- Lógica de Contagem Regressiva (usando hook existente) ---
+  const [isCountdownFinished, setIsCountdownFinished] = useState(false);
   // IMPORTANTE: Crie uma pasta `public/sounds` e adicione os arquivos de áudio.
   const pauseSound = useMemo(() => new Audio('/sounds/pause-alert.mp3'), []);
   const finishSound = useMemo(() => new Audio('/sounds/times-up.mp3'), []);
 
   const {
     timeRemaining,
-    isActive,
-    isPaused,
-    startTimer,
-    pauseTimer,
-    resumeTimer,
-    resetTimer,
-  } = usePausableTimer({
-    initialTime: 300, // 10 minutos
+    isActive: countdownIsActive,
+    isPaused: countdownIsPaused,
+    startTimer: startCountdown,
+    pauseTimer: pauseCountdown,
+    resumeTimer: resumeCountdown,
+    resetTimer: resetCountdown,
+  } = usePausableTimer({ 
+    initialTime,
     pauseInterval: 60, // Pausa a cada 1 minuto
     onIntervalPause: () => pauseSound.play(),
-    onFinish: () => finishSound.play(),
+    onFinish: () => {
+      finishSound.play();
+      if (isCountdown) {
+        setIsCountdownFinished(true);
+      }
+    },
   });
 
+  // --- Lógica de Cronômetro (Contagem Progressiva) ---
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const [stopwatchIsActive, setStopwatchIsActive] = useState(false);
+  const stopwatchIntervalRef = useRef(null);
+
+  useEffect(() => {
+    if (mode === 'stopwatch') {
+      if (stopwatchIsActive) {
+        stopwatchIntervalRef.current = setInterval(() => {
+          setElapsedTime(prev => prev + 1);
+        }, 1000);
+      } else {
+        clearInterval(stopwatchIntervalRef.current);
+      }
+    }
+    return () => clearInterval(stopwatchIntervalRef.current);
+  }, [stopwatchIsActive, mode]);
+
+  const startStopwatch = () => setStopwatchIsActive(true);
+  const pauseStopwatch = () => setStopwatchIsActive(false);
+  const resumeStopwatch = () => setStopwatchIsActive(true);
+  const resetStopwatch = () => {
+    setStopwatchIsActive(false);
+    setElapsedTime(0);
+  };
+
+  // --- Variáveis genéricas para controlar a UI ---
+  const isCountdown = mode === 'countdown';
+
+  const timeToDisplay = isCountdown ? timeRemaining : elapsedTime;
+  const isActive = isCountdown ? countdownIsActive : stopwatchIsActive;
+  const isPaused = isCountdown ? countdownIsPaused : !stopwatchIsActive && elapsedTime > 0;
+
+  const start = isCountdown ? startCountdown : startStopwatch;
+  const pause = isCountdown ? pauseCountdown : pauseStopwatch;
+  const resume = isCountdown ? resumeCountdown : resumeStopwatch;
+  const reset = isCountdown ? resetCountdown : resetStopwatch;
+  const masterReset = () => {
+    reset();
+    setIsCountdownFinished(false);
+  };
+
+  // --- Funções de ajuda para a UI ---
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -33,46 +80,57 @@ const LaicaTimer = () => {
   };
 
   const getStatusMessage = () => {
-    if (isPaused && timeRemaining > 0) return "Pausa! Troquem de lugar! 🎨";
-    if (timeRemaining === 0 && !isActive && !isPaused) return "Tempo esgotado! Parabéns! 🎉";
-    if (isActive) return "Hora de desenhar!";
-    return "Prontos para começar?";
+    if (isCountdown) {
+      if (countdownIsPaused && timeRemaining > 0) return "PAUSA! TROQUEM DE LUGAR!";
+      if (timeRemaining === 0 && !countdownIsActive && !countdownIsPaused) return "TEMPO ESGOTADO! PARABENS!";
+      if (countdownIsActive) return "HORA DE DESENHAR!";
+      return "PRONTOS PARA COMECAR?";
+    } else { // Modo Cronômetro
+      if (isActive) return "CONTANDO...";
+      if (isPaused) return "PAUSADO";
+      return "PRONTO PARA MARCAR?";
+    }
   };
 
+  // Se a contagem regressiva terminou, mostra o prompt de compartilhamento
+  if (isCountdown && isCountdownFinished) {
+    return <SharePrompt {...sharePrompt} />;
+  }
+
   return (
-    <div className="font-baloo text-center p-6 rounded-2xl max-w-lg mx-auto shadow-lg bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-200">
+    <div className="font-pixel text-center p-6 md:p-8 rounded-lg max-w-lg mx-auto bg-black/50 border-4 border-pink-500 backdrop-blur-sm">
       
       
-      <div className="my-8">
-        <p className="text-7xl font-mono text-indigo-600 tracking-wider">
-          {formatTime(timeRemaining)}
+      <div className="my-6 md:my-8">
+        <p className="text-6xl sm:text-7xl md:text-8xl text-neon-cyan">
+          {formatTime(timeToDisplay)}
         </p>
-        <p className="text-lg text-gray-600 mt-2 h-6">
+        <p className="text-sm md:text-base text-white/80 mt-3 h-6 tracking-widest">
           {getStatusMessage()}
         </p>
       </div>
 
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
         {!isActive && !isPaused && (
-          <button onClick={startTimer} className="flex items-center gap-2 px-6 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg transition-transform transform hover:scale-105">
-            <PlayIcon /> Iniciar
+          <button onClick={start} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-neon-cyan text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto">
+            <Play className="h-5 w-5" /> Iniciar
           </button>
         )}
 
         {isActive && !isPaused && (
-          <button onClick={pauseTimer} className="flex items-center gap-2 px-6 py-3 bg-yellow-500 text-white font-bold rounded-full shadow-lg transition-transform transform hover:scale-105">
-            <PauseIcon /> Pausar
+          <button onClick={pause} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-amber-400 text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto">
+            <Pause className="h-5 w-5" /> Pausar
           </button>
         )}
 
         {isPaused && (
-          <button onClick={resumeTimer} className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white font-bold rounded-full shadow-lg transition-transform transform hover:scale-105">
-            <PlayIcon /> Continuar
+          <button onClick={resume} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-neon-cyan text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto">
+            <Play className="h-5 w-5" /> Continuar
           </button>
         )}
 
-        <button onClick={resetTimer} className="flex items-center gap-2 px-6 py-3 bg-red-500 text-white font-bold rounded-full shadow-lg transition-transform transform hover:scale-105">
-          <RefreshIcon /> Reiniciar
+        <button onClick={masterReset} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-neon-pink text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto">
+          <RefreshCw className="h-5 w-5" /> Reiniciar
         </button>
       </div>
     </div>
@@ -80,4 +138,3 @@ const LaicaTimer = () => {
 };
 
 export default LaicaTimer;
-

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Question from './Question';
 
-const questions = [
+const questions1 = [
   "Se você fosse um planeta, qual seria e por quê?",
   "Você prefere explorar o fundo do mar ou o espaço sideral?",
   "Qual superpoder você daria para a pessoa ao seu lado?",
@@ -54,12 +54,47 @@ const questions = [
   "Se o amor fosse uma invenção, como ele funcionaria na sua versão?"
 ];
 
+const questions = [
+  "Se você fosse um planeta, qual seria e por quê?",
+  "Você prefere explorar o fundo do mar ou o espaço sideral?",
+  "Qual superpoder você daria para a pessoa ao seu lado?",
+  "Se a nossa família fosse uma tripulação de nave espacial, qual seria a função de cada um?",
+  "Qual é a coisa mais engraçada que já aconteceu com vocês juntos?",
+  "Se você pudesse inventar um animal, como ele seria?",
+  "Qual seria o nome da nossa nave espacial?",
+  "Se cada emoção fosse uma cor, que cor seria a alegria?",
+  "Se pudéssemos morar em um castelo voador, onde ele viajaria?",
+  "Se tivesse uma varinha mágica, o que você faria primeiro?",
+  "Se pudesse escolher um nome secreto para nossa família, qual seria?",
+  "Qual bicho seria o protetor da nossa família em uma aventura?",
+  "Se você tivesse um robô ajudante, o que ele faria por você?",
+  "Se nossa casa virasse um brinquedo gigante, o que teria dentro?",
+  "Se você pudesse criar um planeta só para brincar, como seria?",
+  "Qual seria o uniforme da nossa equipe de heróis?",
+  "Se pudesse dar um presente invisível para alguém, o que daria?",
+  "Se nossos sonhos virassem um filme, que cena apareceria primeiro?",
+  "Se você tivesse uma mochila mágica, o que colocaria dentro?",
+  "Se uma estrela pudesse te dar um conselho, o que ela diria?",
+  "Qual som representa um dia feliz para você?",
+  "Se nossa família fosse um time de super-heróis, qual seria o seu poder?",
+
+];
+
+
+const shareText = {
+      title : 'Parabéns por chegarem até o fim',
+      description : 'Esperamos que tenham se conhecido melhor!',
+      note : ' Que tal inspirar outras famílias a fazerem o mesmo?',
+      whatsappMessage : 'Acabamos de fazer a atividade "Perguntas da Tripulação" da Laica e foi muito divertido!',
+      link: ''
+  }
+
 
 const CrewQuestions = () => {
   
   return (
     <>
-      <Question questions={questions} />
+      <Question questions={questions} sharePrompt={shareText}/>
     </>
       
   );

@@ -69,6 +69,15 @@ const interviewQuestions = [
   "Se você pudesse mudar uma regra do mundo, qual mudaria?"
 ];
 
+const shareText = {
+  title: 'Vocês deram um show de atuação!',
+  description: 'A entrevista intergaláctica foi um sucesso — cheia de vozes engraçadas, respostas criativas e muita imaginação!',
+  note: 'Compartilhe esse momento com outras famílias e inspire mais aventuras cósmicas!',
+  whatsappMessage: 'Acabamos de fazer a atividade "Entrevista Intergaláctica" da Laica! Rimos muito com as respostas e foi um ótimo jeito de brincar juntos. Super recomendamos!',
+  link: ''
+};
+
+
 
 const IntergalaticInterview = () => {
   
@@ -79,7 +88,7 @@ const IntergalaticInterview = () => {
             <RandomPhraseGenerator phrases={characters} />
         </div>
       
-      <Question questions={interviewQuestions} />
+      <Question questions={interviewQuestions} sharePrompt={shareText} />
 
     </>
       

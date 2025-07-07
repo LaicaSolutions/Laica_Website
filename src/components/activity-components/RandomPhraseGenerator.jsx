@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button } from '../ui/button';
 import { RefreshCw } from 'lucide-react';
 
 const defaultPhrases = [
@@ -23,12 +22,18 @@ const RandomPhraseGenerator = ({ phrases = defaultPhrases }) => {
   };
 
   return (
-    <div className="w-full p-6 bg-black/20 border border-white/10 rounded-lg flex flex-col items-center justify-center gap-4">
-      <p className="text-white/90 text-xl italic text-center">"{phrase}"</p>
-      <Button onClick={generatePhrase} variant="outline" className="space-button bg-transparent hover:bg-primary/20" disabled={!phrases || phrases.length <= 1}>
-        <RefreshCw className="mr-2 h-4 w-4" />
-        Gerar Nova Frase
-      </Button>
+    <div className="font-pixel w-full p-6 md:p-8 bg-black/50 border-4  backdrop-blur-sm rounded-lg flex flex-col items-center justify-center gap-6">
+      <p className=" text-lg md:text-xl text-center leading-relaxed ">
+        "{phrase}"
+      </p>
+      <button
+        onClick={generatePhrase}
+        className="flex items-center gap-2 px-4 py-2 bg-amber-400 text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-x-0 disabled:translate-y-0 disabled:shadow-[4px_4px_0px_0px_#fff]"
+        disabled={!phrases || phrases.length <= 1}
+      >
+        <RefreshCw className="h-4 w-4" />
+        Nova Frase
+      </button>
     </div>
   );
 };

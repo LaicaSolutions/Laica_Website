@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 
 // 1. Importe todos os componentes de atividade que você criar.
 import DrawingCanvas from './DrawingCanvas';
@@ -9,6 +9,12 @@ import PhotoComponent from './PhotoComponent';
 import FourHandsDrawing from './FourHandsDrawing';
 import CrewQuestions from './CrewQuestions';
 import IntergalaticInterview from './IntergalaticInterview';
+import { SharePrompt } from './SharePrompt';
+import { StartScreen } from './StartScreen';
+import CrazyStory from './CrazyHistory';
+import BuildWorld from './BuildWorld';
+import MakingPlan from './MakingPlan';
+
 
 // 2. Crie o mapeamento: a chave é o `componentType` do seu dataset, o valor é o componente importado.
 const componentMap = {
@@ -20,11 +26,28 @@ const componentMap = {
   fourHandsDrawing: FourHandsDrawing,
   crewQuestions: CrewQuestions,
   character: IntergalaticInterview,
+  share: SharePrompt,
+  crazyStory: CrazyStory,
+  buildWorld: BuildWorld,
+  makingPlan: MakingPlan,
   // Adicione outros tipos de componentes aqui conforme for criando
 };
 
+
+
 // 3. O componente Renderer que seleciona e renderiza o componente correto.
 const ActivityComponentRenderer = ({ componentType, ...props }) => {
+  //Estado para controlar se a experiência começou
+  const [hasStarted, setHasStarted] = useState(false);
+
+  
+
+  //Lógica de renderização condicional
+  if (!hasStarted) {
+    return <StartScreen neonColor={props.activity?.color} onStart={() => setHasStarted(true)}  />;
+  }
+
+
   // Busca o componente no mapa.
   const SpecificActivityComponent = componentMap[componentType];
 
@@ -33,8 +56,17 @@ const ActivityComponentRenderer = ({ componentType, ...props }) => {
     return null;
   }
 
-  // Renderiza o componente encontrado, passando quaisquer props adicionais.
-  return <SpecificActivityComponent {...props} />;
+   // Lógica especial para o SharePrompt: passa as props dinâmicas do objeto da atividade.
+  if (componentType === 'share') {
+    // Extrai o objeto `sharePrompt` da atividade. Se não existir, usa um objeto vazio.
+    // Isso permite que o componente SharePrompt use seus valores padrão.
+    const shareProps = props.activity?.sharePrompt || {};
+    return <SharePrompt {...shareProps} />;
+  }
+
+  // Para outros componentes, passa a atividade inteira e quaisquer outras props.
+  return <SpecificActivityComponent  {...props} />;
+
 };
 
 export default ActivityComponentRenderer;

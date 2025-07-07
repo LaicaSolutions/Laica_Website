@@ -1,26 +1,32 @@
 import React from 'react';
 
-// Componente para renderizar uma playlist do YouTube.
+// Componente para renderizar um vídeo ou uma playlist do YouTube.
 // Ele recebe o objeto 'activity' completo como prop.
 const YouTubePlaylist = ({ activity }) => {
-  // Verifica se a atividade possui um ID de playlist. Se não, exibe uma mensagem de erro.
-  if (!activity?.playlistId) {
+  const { playlistId, videoId } = activity || {};
+  let embedSrc = '';
+
+  // Prioriza a playlist se ambos os IDs forem fornecidos.
+  if (playlistId) {
+    embedSrc = `https://www.youtube.com/embed/videoseries?list=${playlistId}`;
+  } else if (videoId) {
+    embedSrc = `https://www.youtube.com/embed/${videoId}`;
+  }
+
+  // Se nenhum ID for encontrado, exibe uma mensagem de erro.
+  if (!embedSrc) {
     return (
-      <div className="text-center text-red-400">
-        <p>ID da playlist do YouTube não foi configurado para esta atividade.</p>
+      <div className="font-pixel text-center text-red-400 bg-black/50 border-4 border-red-500 p-8 rounded-lg">
+        <p>ERRO: ID DO VÍDEO OU PLAYLIST NÃO ENCONTRADO.</p>
       </div>
     );
   }
 
-  // Constrói a URL de incorporação (embed) para a playlist.
-  const playlistSrc = `https://www.youtube.com/embed/videoseries?list=${activity.playlistId}`;
-
   return (
-    // O container 'aspect-video' mantém a proporção correta do vídeo (16:9).
-    <div className="aspect-video w-full">
+    <div className="aspect-video w-full bg-black border-4 border-cyan-400 rounded-lg p-1 shadow-lg">
       <iframe
-        className="w-full h-full rounded-lg shadow-lg"
-        src={playlistSrc}
+        className="w-full h-full rounded-md"
+        src={embedSrc}
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
