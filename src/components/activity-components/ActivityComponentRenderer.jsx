@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 
 // 1. Importe todos os componentes de atividade que você criar.
-import DrawingCanvas from './DrawingCanvas';
+import PuzzleCanvas from './PuzzleCanvas';
 import RandomPhraseGenerator from './RandomPhraseGenerator';
 import YouTubePlaylist from './YouTubePlaylist';
 import SpaceHuntBingo from './SpaceBingo/SpaceHuntBingo';
@@ -14,11 +14,12 @@ import { StartScreen } from './StartScreen';
 import CrazyStory from './CrazyHistory';
 import BuildWorld from './BuildWorld';
 import MakingPlan from './MakingPlan';
+import { Puzzle } from 'lucide-react';
 
 
 // 2. Crie o mapeamento: a chave é o `componentType` do seu dataset, o valor é o componente importado.
 const componentMap = {
-  drawing: DrawingCanvas,
+  puzzle: PuzzleCanvas,
   phrase: RandomPhraseGenerator,
   video: YouTubePlaylist,
   spaceHunt: SpaceHuntBingo,

@@ -3,14 +3,14 @@ import { Component } from "lucide-react";
 export const activities = [
   {
     id: '1',
-    name: 'Pintura Espacial',
+    name: 'Memórias da Laica',
     type: 'Solo',
     difficulty: 'easy',
     color: 'from-blue-400 to-cyan-500',
     description: 'Desenhos para pintar',
     missionScript: 'Desenhos para pintar',
     audioSrc: null,
-    componentType: 'drawing',
+    componentType: 'puzzle',
     
   },
   {

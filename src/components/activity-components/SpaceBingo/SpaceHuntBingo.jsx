@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SharePrompt } from '../SharePrompt';
+import { Volume2 } from 'lucide-react'; // 1. Importar o ícone de som
 
 // Dados para os itens do bingo baseados no local
 // Usamos emojis como placeholders para as imagens
@@ -31,7 +32,6 @@ const bingoData = {
 const locationOptions = [
   { value: 'casa', label: '🏠' },
   { value: 'restaurante', label: '🍽️' },
- 
   { value: 'parque', label: '🌳' },
 ];
 
@@ -43,6 +43,24 @@ const shuffleArray = (array) => {
     [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
   }
   return newArray;
+};
+
+// Helper para verificar se o `src` é uma URL de imagem válida
+const isImageUrl = (src) => typeof src === 'string' && (src.startsWith('http') || src.startsWith('/'));
+
+// 2. Função para ler o texto em voz alta
+const speakWord = (text) => {
+  if ('speechSynthesis' in window) {
+    // Para qualquer fala pendente para não sobrepor
+    window.speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'pt-BR'; // Garante a pronúncia correta em português
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+  } else {
+    console.error('Seu navegador não suporta a síntese de voz.');
+  }
 };
 
 const SpaceHuntBingo = () => {
@@ -145,14 +163,35 @@ const SpaceHuntBingo = () => {
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {bingoItems.map((item, index) => (
               <div 
                 key={index} 
-                className={`relative border-2 border-cyan-400 rounded-lg p-2 bg-black/30 cursor-pointer transition-transform duration-200 flex flex-col items-center justify-center h-28 md:h-32 select-none ${!isComplete && 'hover:-translate-y-1'}`} 
+                className={`relative border-2 border-cyan-400 rounded-lg p-2 bg-black/30 cursor-pointer transition-transform duration-200 flex flex-col items-center justify-center h-36 md:h-36 select-none ${!isComplete && 'hover:-translate-y-1'}`} 
                 onClick={() => handleItemClick(index)}
               >
-                <div className="text-4xl sm:text-5xl">{item.image}</div>
+                {/* 3. Adicionar o ícone de som */}
+                <div 
+                  className="absolute top-2 right-2 text-cyan-400/70 hover:text-cyan-400 transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation(); // Impede que o clique marque o item
+                    speakWord(item.name);
+                  }}
+                >
+                  <Volume2 size={30} />
+                </div>
+
+                <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+                  {isImageUrl(item.image) ? (
+                    <img 
+                      src={item.image} 
+                      alt={item.name} 
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  ) : (
+                    <span className="text-4xl sm:text-5xl">{item.image}</span>
+                  )}
+                </div>
                 <div className="mt-2 text-[10px] md:text-xs leading-tight text-white/90 text-center break-words">{item.name}</div>
                 {foundItems.has(index) && (
                   <div className="absolute inset-0 bg-black/80 flex items-center justify-center rounded-md backdrop-blur-sm">
