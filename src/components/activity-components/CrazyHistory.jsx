@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { usePausableTimer } from '../../hooks/usePausableTimer';
 import { SharePrompt } from './SharePrompt';
+import LaicaTimer from './LaicaTimer';
 import { Play, Pause, RefreshCw } from 'lucide-react';
 
 // Lista de palavras para a história maluca
@@ -69,14 +70,16 @@ const CrazyStory = ({ activity }) => {
     <div className="font-pixel text-center p-6 md:p-8 rounded-lg max-w-2xl mx-auto bg-black/50 border-4 border-pink-500 backdrop-blur-sm space-y-8">
       {/* Display da Palavra */}
       <div className="bg-black/30 border-2 border-cyan-400 rounded-lg p-6 min-h-[120px] flex items-center justify-center">
-        <p className="text-4xl md:text-5xl text-cyan-400 uppercase tracking-widest [text-shadow:_0_0_8px_#00ffff]">
+        <p className="text-xl md:text-2xl text-cyan-400 uppercase tracking-widest [text-shadow:_0_0_8px_#00ffff]">
           {currentWord}
         </p>
       </div>
+       
 
+      
       {/* Timer */}
       <div>
-        <p className="text-6xl sm:text-7xl md:text-8xl text-white/90">
+        <p className="text-5xl sm:text-6xl md:text-7xl text-white/90">
           {formatTime(timeRemaining)}
         </p>
         <p className="text-sm md:text-base text-white/70 mt-2 h-6 tracking-widest">
@@ -108,6 +111,9 @@ const CrazyStory = ({ activity }) => {
           <RefreshCw className="h-5 w-5" /> Reiniciar
         </button>
       </div>
+      
+
+      
     </div>
   );
 };

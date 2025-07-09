@@ -55,7 +55,7 @@ const Question = ({ questions = defaultQuestions, sharePrompt }) => {
     <div className="font-pixel text-center p-6 md:p-8 rounded-lg max-w-2xl mx-auto bg-black/50 border-4 border-cyan-400 backdrop-blur-sm text-white flex flex-col justify-between min-h-[300px]">
       <div className="flex-grow flex items-center justify-center">
         {hasQuestions ? (
-          <p className={`text-2xl md:text-3xl leading-relaxed transition-opacity duration-150 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+          <p className={`text-xl md:text-2xl leading-relaxed transition-opacity duration-150 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
             {questions[currentIndex]}
           </p>
         ) : (

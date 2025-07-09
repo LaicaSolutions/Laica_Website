@@ -139,24 +139,24 @@ const SpaceHuntBingo = () => {
               note=""
             />
           ) : (
-            <div className="text-white text-center">
-              <p className="text-lg uppercase tracking-widest text-white/80">TEMPO</p>
-              <p className="text-6xl text-neon-cyan">{formatTime(time)}</p>
+            <div className="text-white text-center space-y-1">
+              <p className="text-base md:text-lg uppercase tracking-widest text-white/80">TEMPO</p>
+              <p className="text-5xl sm:text-6xl text-neon-cyan">{formatTime(time)}</p>
             </div>
           )}
 
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {bingoItems.map((item, index) => (
               <div 
                 key={index} 
                 className={`relative border-2 border-cyan-400 rounded-lg p-2 bg-black/30 cursor-pointer transition-transform duration-200 flex flex-col items-center justify-center h-28 md:h-32 select-none ${!isComplete && 'hover:-translate-y-1'}`} 
                 onClick={() => handleItemClick(index)}
               >
-                <div className="text-5xl">{item.image}</div>
+                <div className="text-4xl sm:text-5xl">{item.image}</div>
                 <div className="mt-2 text-[10px] md:text-xs leading-tight text-white/90 text-center break-words">{item.name}</div>
                 {foundItems.has(index) && (
                   <div className="absolute inset-0 bg-black/80 flex items-center justify-center rounded-md backdrop-blur-sm">
-                    <span className="text-pink-500 text-7xl font-bold leading-none [text-shadow:0_0_8px_#ff00ff]">X</span>
+                    <span className="text-pink-500 text-6xl sm:text-7xl font-bold leading-none [text-shadow:0_0_8px_#ff00ff]">X</span>
                   </div>
                 )}
               </div>

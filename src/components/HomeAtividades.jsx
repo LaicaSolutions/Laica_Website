@@ -34,35 +34,32 @@ export default function HomeAtividades() {
 
           <Tabs defaultValue="all" className="w-full">
             <div className="flex justify-center mb-8">
-                <TabsList className="bg-black/30 backdrop-blur border border-white/10 ">
-                  <TabsTrigger 
+                <TabsList className="bg-black/70 border-2 border-primary p-1 rounded-lg">
+                  <TabsTrigger
                     value="all"
                     onClick={() => setFilter('all')}
-                    className="data-[state=active]:bg-pink-500"
+                    className="px-4 py-2 font-code uppercase text-primary transition-colors rounded-md hover:bg-primary/20 data-[state=active]:bg-pink-500 data-[state=active]:text-background"
                   >
-                    <div className="flex flex-col items-center justify-center md:flex-row md:gap-1">
-                      <span>Todas</span>
-                      <span>as Atividades</span>
-                    </div>
+                    Todas
                   </TabsTrigger>
-                  <TabsTrigger 
-                    value="solo" 
+                  <TabsTrigger
+                    value="solo"
                     onClick={() => setFilter('Solo')}
-                    className="data-[state=active]:bg-pink-500"
+                    className="px-4 py-2 font-code uppercase text-primary transition-colors rounded-md hover:bg-primary/20 data-[state=active]:bg-pink-500 data-[state=active]:text-background"
                   >
-                    <div className="flex flex-col items-center justify-center md:flex-row">
-                      <User className="h-6 w-6 mb-1 md:mb-0 md:mr-2" />
-                      <span>Missões Solos</span>
+                    <div className="flex items-center justify-center gap-2">
+                      <User className="h-5 w-5" />
+                      <span>Solo</span>
                     </div>
                   </TabsTrigger>
-                  <TabsTrigger 
-                    value="duo" 
+                  <TabsTrigger
+                    value="duo"
                     onClick={() => setFilter('Duo')}
-                    className="data-[state=active]:bg-pink-500"
+                    className="px-4 py-2 font-code uppercase text-primary transition-colors rounded-md hover:bg-primary/20 data-[state=active]:bg-pink-500 data-[state=active]:text-background"
                   >
-                    <div className="flex flex-col items-center justify-center md:flex-row">
-                      <Users className="h-6 w-6 mb-1 md:mb-0 md:mr-2" />
-                      <span>Missões Duo</span>
+                    <div className="flex items-center justify-center gap-2">
+                      <Users className="h-5 w-5" />
+                      <span>Duo</span>
                     </div>
                   </TabsTrigger>
                 </TabsList>

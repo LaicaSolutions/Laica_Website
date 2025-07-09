@@ -3,7 +3,7 @@ import { usePausableTimer } from '../../hooks/usePausableTimer';
 import { Play, Pause, RefreshCw } from 'lucide-react';
 import { SharePrompt } from './SharePrompt';
 
-const LaicaTimer = ({ mode = 'countdown', initialTime = 300, sharePrompt }) => {
+const LaicaTimer = ({ mode = 'countdown', initialTime = 300, sharePrompt, pauseInterval = null }) => {
   // --- Lógica de Contagem Regressiva (usando hook existente) ---
   const [isCountdownFinished, setIsCountdownFinished] = useState(false);
   // IMPORTANTE: Crie uma pasta `public/sounds` e adicione os arquivos de áudio.
@@ -20,7 +20,7 @@ const LaicaTimer = ({ mode = 'countdown', initialTime = 300, sharePrompt }) => {
     resetTimer: resetCountdown,
   } = usePausableTimer({ 
     initialTime,
-    pauseInterval: 60, // Pausa a cada 1 minuto
+    pauseInterval, // Pausa a cada X segundos. Se for null, não há pausa.
     onIntervalPause: () => pauseSound.play(),
     onFinish: () => {
       finishSound.play();
@@ -81,7 +81,7 @@ const LaicaTimer = ({ mode = 'countdown', initialTime = 300, sharePrompt }) => {
 
   const getStatusMessage = () => {
     if (isCountdown) {
-      if (countdownIsPaused && timeRemaining > 0) return "PAUSA! TROQUEM DE LUGAR!";
+      if (countdownIsPaused && timeRemaining > 0) return "PAUSADO";
       if (timeRemaining === 0 && !countdownIsActive && !countdownIsPaused) return "TEMPO ESGOTADO! PARABENS!";
       if (countdownIsActive) return "HORA DE DESENHAR!";
       return "PRONTOS PARA COMECAR?";
@@ -102,7 +102,7 @@ const LaicaTimer = ({ mode = 'countdown', initialTime = 300, sharePrompt }) => {
       
       
       <div className="my-6 md:my-8">
-        <p className="text-6xl sm:text-7xl md:text-8xl text-neon-cyan">
+        <p className="text-5xl sm:text-6xl md:text-7xl text-neon-cyan">
           {formatTime(timeToDisplay)}
         </p>
         <p className="text-sm md:text-base text-white/80 mt-3 h-6 tracking-widest">
@@ -112,24 +112,24 @@ const LaicaTimer = ({ mode = 'countdown', initialTime = 300, sharePrompt }) => {
 
       <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
         {!isActive && !isPaused && (
-          <button onClick={start} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-neon-cyan text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto">
+          <button onClick={start} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-neon-cyan text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto text-sm md:text-base">
             <Play className="h-5 w-5" /> Iniciar
           </button>
         )}
 
         {isActive && !isPaused && (
-          <button onClick={pause} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-amber-400 text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto">
+          <button onClick={pause} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-amber-400 text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto text-sm md:text-base">
             <Pause className="h-5 w-5" /> Pausar
           </button>
         )}
 
         {isPaused && (
-          <button onClick={resume} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-neon-cyan text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto">
+          <button onClick={resume} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-neon-cyan text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto text-sm md:text-base">
             <Play className="h-5 w-5" /> Continuar
           </button>
         )}
 
-        <button onClick={masterReset} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-neon-pink text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto">
+        <button onClick={masterReset} className="flex w-full items-center justify-center gap-2 px-6 py-3 bg-neon-pink text-black font-bold uppercase tracking-widest border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 md:w-auto text-sm md:text-base">
           <RefreshCw className="h-5 w-5" /> Reiniciar
         </button>
       </div>

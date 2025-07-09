@@ -25,8 +25,8 @@ const Navbar = () => {
   ];
 
   const navItemsAtividades = [
-    {id: 'atividadesInicio', label: 'Inicio'},
-    {id: 'atividadesTv', label: 'TV'}
+    {id: 'atividadesInicio', label: 'INICIO'},
+    {id: 'atividadesTv', label: 'GALERIA INTERGALACTICA'}
   ];
 
   useEffect(() => {
@@ -137,19 +137,20 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#0D1B2A]/95 backdrop-blur-md">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() =>
-                  !isHome ? goToSectionFromOtherPage(item.id) : scrollToSection(item.id)
-                }
-                className={`font-inter text-left py-2 ${
-                  activeSection === item.id ? 'text-[#FF4F87] font-medium' : 'text-[#F9F9F9]'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {(isHome || isEvent ? navItems : navItemsAtividades).map((item) => (
+          
+            <button
+              key={item.id}
+              onClick={() =>
+                !isHome ? goToSectionFromOtherPage(item.id) : scrollToSection(item.id)
+              }
+              className={`font-inter transition-all duration-300 hover:text-[#FF4F87] ${
+                activeSection === item.id ? 'text-[#FF4F87] font-medium' : 'text-[#F9F9F9]'
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
 
             {isHome && (
               <button 

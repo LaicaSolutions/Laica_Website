@@ -88,7 +88,7 @@ const FourHandsDrawing = ({ activity }) => {
             <RandomPhraseGenerator phrases={drawingPrompts}/>
         </div>
           
-        <LaicaTimer mode="countdown" initialTime={300} sharePrompt={shareText} />
+        <LaicaTimer mode="countdown" initialTime={300} sharePrompt={shareText} pauseInterval={30} />
       </div>
     </div>
   );
