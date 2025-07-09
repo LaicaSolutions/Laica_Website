@@ -35,7 +35,15 @@ export const activities = [
     missionScript: 'Tente imitar o ritmo',
     audioSrc: null,
     componentType: 'video',
-    playlistId : 'PLl9SThFl24vWC3VMlIZHIoTL6miLRYd3M',
+    videoIds : [
+      '4UBVulNB1go',
+      'Tnhcx5OlF24',
+      'BE4lXmSWrTs',
+      '59X5q-L3bmY',
+      'qettWMeLUCc',
+      '8n5ku9UKe2o',
+      'XBjMU8Rr8AY'
+    ],
   },
   {
     id: '4',
