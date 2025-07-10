@@ -8,9 +8,17 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs';
 export default function HomeAtividades() {
   const [filter, setFilter] = useState('all');
 
-  const filteredActivities = activities.filter((activity) =>
-    filter === 'all' ? true : activity.type === filter
-  );
+  // 1. Define a ordem da dificuldade
+  const difficultyOrder = {
+    easy: 1,
+    medium: 2,
+    hard: 3,
+  };
+
+  // 2. Filtra e depois ordena as atividades
+  const filteredActivities = activities
+    .filter((activity) => (filter === 'all' ? true : activity.type === filter))
+    .sort((a, b) => difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]);
 
   return (
     <>
