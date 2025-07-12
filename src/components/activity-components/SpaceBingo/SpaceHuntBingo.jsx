@@ -6,27 +6,149 @@ import { Volume2 } from 'lucide-react'; // 1. Importar o ícone de som
 // Usamos emojis como placeholders para as imagens
 const bingoData = {
   casa: [
-    { name: 'Sofá', image: '🛋️' }, { name: 'TV', image: '📺' },
-    { name: 'Cama', image: '🛏️' }, { name: 'Geladeira', image: '🧊' },
-    { name: 'Mesa', image: '🪑' }, { name: 'Cadeira', image: '🪑' },
-    { name: 'Livro', image: '📖' }, { name: 'Janela', image: '🖼️' },
-    { name: 'Planta', image: '🪴' },
-  ],
-  restaurante: [
-    { name: 'Mesa', image: '🪑' }, { name: 'Cadeira', image: '🪑' },
-    { name: 'Garfo', image: '🍴' }, { name: 'Prato', image: '🍽️' },
-    { name: 'Copo', image: '🥤' }, { name: 'Cardápio', image: '📜' },
-    { name: 'Comida', image: '🍕' }, { name: 'Garçom', image: '🧑‍🍳' },
-    { name: 'Guardanapo', image: '🧻' },
-  ],
+  // Sala
+  { name: 'Sofá', image: '🛋️' },
+  { name: 'TV', image: '📺' },
+  { name: 'Controle remoto', image: '🎮' },
+  { name: 'Abajur', image: '💡' },
+  { name: 'Quadro', image: '🖼️' },
+  { name: 'Tapete', image: '🧺' },
+  { name: 'Almofada', image: '🛋️' },
+  { name: 'Janela', image: '🪟' },
+  { name: 'Relógio', image: '🕰️' },
+
+  // Quarto
+  { name: 'Cama', image: '🛏️' },
+  { name: 'Travesseiro', image: '🛌' },
+  { name: 'Cobertor', image: '🛏️' },
+  { name: 'Espelho', image: '🪞' },
+  { name: 'Armário', image: '🚪' },
+  { name: 'Brinquedo', image: '🧸' },
+  { name: 'Livro', image: '📖' },
+  { name: 'Luminária', image: '🔦' },
+
+  // Cozinha
+  { name: 'Geladeira', image: '🧊' },
+  { name: 'Fogão', image: '🔥' },
+  { name: 'Panela', image: '🍲' },
+  { name: 'Prato', image: '🍽️' },
+  { name: 'Garfo', image: '🍴' },
+  { name: 'Copo', image: '🥛' },
+  { name: 'Xícara', image: '☕' },
+  { name: 'Toalha de mesa', image: '🧻' },
+
+  // Banheiro
+  { name: 'Pia', image: '🚰' },
+  { name: 'Toalha', image: '🧻' },
+  { name: 'Escova de dentes', image: '🪥' },
+  { name: 'Sabonete', image: '🧼' },
+  { name: 'Espelho do banheiro', image: '🪞' },
+
+  // Lavanderia
+  { name: 'Sabão em pó', image: '🧂' },
+  { name: 'Cesto de roupa', image: '🧺' },
+  { name: 'Vassoura', image: '🧹' },
+  { name: 'Pano de chão', image: '🧽' },
+
+  // Escritório
+  { name: 'Celular', image: '📱' },
+  { name: 'Caderno', image: '📒' },
+  { name: 'Caneta', image: '🖊️' },
+
+  // Varanda / Externo
+  { name: 'Planta', image: '🪴' },
   
-  parque: [
-    { name: 'Árvore', image: '🌳' }, { name: 'Banco', image: '🪑' },
-    { name: 'Escorregador', image: '🛝' }, { name: 'Balanço', image: '🎈' },
-    { name: 'Bola', image: '⚽' }, { name: 'Pássaro', image: '🐦' },
-    { name: 'Flor', image: '🌸' }, { name: 'Fonte', image: '⛲' },
+  // Elementos sensoriais
+  { name: 'Algo vermelho', image: '🔴' },
+  { name: 'Algo azul', image: '🔵' },
+  { name: 'Algo que faz barulho', image: '🔊' },
+  { name: 'Algo que brilha', image: '✨' },
+  { name: 'Algo macio', image: '🧸' },
+  { name: 'Algo com cheiro bom', image: '🕯️' },
+  { name: 'Algo que começa com a letra M', image: '🔠' },
+  { name: 'Objeto que gosta', image: '❤️' },
+]
+,
+ restaurante: [
+  { name: 'Mesa', image: '🪑' },
+  { name: 'Cadeira', image: '🪑' },
+  { name: 'Cardápio', image: '📜' },
+  { name: 'Garçom ou garçonete', image: '🧑‍🍳' },
+  { name: 'Cliente comendo', image: '🙂' },
+  { name: 'Balcão', image: '🧱' },
+
+  // Utensílios
+  { name: 'Garfo', image: '🍴' },
+  { name: 'Faca', image: '🔪' },
+  { name: 'Colher', image: '🥄' },
+  { name: 'Prato', image: '🍽️' },
+  { name: 'Copo', image: '🥤' },
+  { name: 'Xícara', image: '☕' },
+  { name: 'Guardanapo', image: '🧻' },
+  { name: 'Bandeja', image: '🛎️' },
+
+  // Comidas e bebidas
+  { name: 'Salada', image: '🥗' },
+  { name: 'Sopa', image: '🥣' },
+  { name: 'Arroz e feijão', image: '🍛' },
+  { name: 'Doce ou sobremesa', image: '🍰' },
+  { name: 'Refrigerante', image: '🥤' },
+  { name: 'Água', image: '💧' },
+  { name: 'Suco', image: '🧃' },
+
+  // Ambiente
+  { name: 'Luz', image: '💡' },
+  { name: 'Quadro decorativo', image: '🖼️' },
+  { name: 'Planta no restaurante', image: '🪴' },
+  { name: 'Janela', image: '🪟' },
+  { name: 'Porta de entrada', image: '🚪' },
+
+  // Elementos sensoriais / interativos
+  { name: 'Alguém sorrindo', image: '😊' },
+  { name: 'Algo que faz barulho', image: '🔊' },
+  { name: 'Algo vermelho', image: '🔴' },
+  { name: 'Cheiro gostoso', image: '👃' },
+  { name: 'Algo que começa com a letra P', image: '🔠' },
+  { name: 'Comida favorita', image: '❤️' },
+  { name: 'Uma comida que você nunca comeu', image: '❓' },
+],
+
+  
+ parque: [
+    { name: 'Árvore', image: '🌳' },
+    { name: 'Banco', image: '🪑' },
+    { name: 'Escorregador', image: '🛝' },
+    { name: 'Balanço', image: '🎠' },
+    { name: 'Bola', image: '⚽' },
+    { name: 'Pássaro', image: '🐦' },
+    { name: 'Flor', image: '🌸' },
+    { name: 'Fonte', image: '⛲' },
     { name: 'Bicicleta', image: '🚲' },
-  ],
+
+    // Itens adicionais
+    { name: 'Cachorro', image: '🐕' },
+    { name: 'Pessoa correndo', image: '🏃‍♂️' },
+    { name: 'Pipa', image: '🪁' },
+    { name: 'Sorvete', image: '🍦' },
+    { name: 'Criança', image: '🧒' },
+    { name: 'Folha', image: '🍂' },
+    { name: 'Caminho', image: '🛤️' },
+    { name: 'Nuvem', image: '☁️' },
+    { name: 'Sol', image: '🌞' },
+    { name: 'Risada', image: '😂' },
+
+    // Sensações / elementos interativos
+    { name: 'Algo vermelho', image: '🔴' },
+    { name: 'Algo que faz barulho', image: '🔊' },
+    { name: 'Inseto', image: '🐜' },
+    { name: 'Placa', image: '🪧' },
+    { name: 'Lixeira', image: '🗑️' },
+    { name: 'Boné', image: '🧢' },
+    { name: 'Óculos', image: '👓' },
+    
+   
+]
+
 };
 
 const locationOptions = [
@@ -74,7 +196,7 @@ const SpaceHuntBingo = () => {
   useEffect(() => {
     if (location && bingoData[location]) {
       // Embaralha e pega 9 itens para uma grade 3x3
-      const items = shuffleArray(bingoData[location]).slice(0, 9);
+      const items = shuffleArray(bingoData[location]).slice(0, 10);
       setBingoItems(items);
       setFoundItems(new Set()); // Reseta os itens encontrados ao mudar de local
       setTime(0);

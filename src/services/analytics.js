@@ -11,7 +11,7 @@ const analytics = getAnalytics(app);
  */
 export const logAnalyticsEvent = (eventName, eventParams = {}) => {
   // Log no console para facilitar a depuração durante o desenvolvimento
-  console.log(`[Analytics Event]: ${eventName}`, eventParams);
+  //console.log(`[Analytics Event]: ${eventName}`, eventParams);
 
   try {
     logEvent(analytics, eventName, eventParams);
