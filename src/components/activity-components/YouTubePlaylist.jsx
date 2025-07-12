@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { logAnalyticsEvent } from '../../services/analytics';
+import { SharePrompt } from './SharePrompt';
 
 // Componente para renderizar um vídeo ou uma playlist do YouTube.
 // Ele recebe o objeto 'activity' completo como prop.
 const YouTubePlaylist = ({ activity }) => {
-  const { playlistId, videoId, videoIds } = activity || {};
+  const { playlistId, videoId, videoIds, sharePrompt } = activity || {};
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
+  const startTimeRef = useRef(Date.now());
 
   // Caso 1: É uma playlist
   if (playlistId) {
@@ -26,19 +30,60 @@ const YouTubePlaylist = ({ activity }) => {
 
   // Caso 2: É um array de IDs de vídeo
   if (Array.isArray(videoIds) && videoIds.length > 0) {
+    // Dispara um evento quando a sequência de vídeos começa
+    useEffect(() => {
+      logAnalyticsEvent('video_series_start', {
+        video_count: videoIds.length,
+        activity_name: activity.name,
+      });
+    }, [videoIds.length, activity.name]);
+
     const goToPrevious = () => {
       const isFirst = currentIndex === 0;
       const newIndex = isFirst ? videoIds.length - 1 : currentIndex - 1;
       setCurrentIndex(newIndex);
+      logAnalyticsEvent('select_content', {
+        content_type: 'video_navigation',
+        item_id: 'previous',
+        video_id: videoIds[currentIndex],
+      });
     };
 
     const goToNext = () => {
       const isLast = currentIndex === videoIds.length - 1;
-      const newIndex = isLast ? 0 : currentIndex + 1;
-      setCurrentIndex(newIndex);
+
+      logAnalyticsEvent('select_content', {
+        content_type: 'video_navigation',
+        item_id: isLast ? 'finish' : 'next',
+        video_id: videoIds[currentIndex],
+      });
+
+      if (isLast) {
+        const durationInSeconds = (Date.now() - startTimeRef.current) / 1000;
+        logAnalyticsEvent('video_series_complete', {
+          duration_seconds: Math.round(durationInSeconds),
+          video_count: videoIds.length,
+          activity_name: activity.name,
+        });
+        setIsFinished(true);
+      } else {
+        const newIndex = currentIndex + 1;
+        setCurrentIndex(newIndex);
+      }
     };
 
     const embedSrc = `https://www.youtube.com/embed/${videoIds[currentIndex]}`;
+
+    if (isFinished) {
+      return (
+        <SharePrompt
+          title="Você concluiu todos os níveis da série!"
+          description="Que tal compartilhar essa conquista?"
+          whatsappMessage="Completei todos os níveis da série!"
+          {...sharePrompt}
+        />
+      );
+    }
 
     return (
       <div className="w-full flex flex-col items-center p-4 gap-4">
