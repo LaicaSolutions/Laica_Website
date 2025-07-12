@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Feather, Flame, PlayIcon, Skull, User, Users, ZapIcon } from 'lucide-react';
+import { logAnalyticsEvent } from '../services/analytics';
 import { Badge } from './ui/badge';
 
 // Componente CassetteTape: Renderiza um card estilizado como uma fita cassete para uma atividade.
@@ -25,6 +26,14 @@ export function CassetteTape({ activity }) {
   // Ao clicar, o usuário é navegado para a página de detalhes da atividade específica.
   return (
     <Link
+      onClick={() => {
+        logAnalyticsEvent('select_item', {
+          item_list_name: 'Atividades',
+          item_id: activity.id,
+          item_name: activity.name,
+          item_category: activity.type,
+        });
+      }}
       to={`/atividades/${activity.id}`}
       // Classes de estilização para a transição e foco, melhorando a acessibilidade e a experiência do usuário.
       className="block group transition-transform duration-300 hover:-translate-y-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-lg"

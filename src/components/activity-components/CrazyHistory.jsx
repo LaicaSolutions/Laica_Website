@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { usePausableTimer } from '../../hooks/usePausableTimer';
 import { SharePrompt } from './SharePrompt';
-import LaicaTimer from './LaicaTimer';
 import { Play, Pause, RefreshCw } from 'lucide-react';
 
 // Lista de palavras para a história maluca
@@ -10,6 +9,13 @@ const crazyWords = [
   "Mistério", "Tesouro", "Castelo", "Dragão", "Mágico", "Segredo", "Pijama",
   "Aventura", "Espelho", "Sombra", "Risada", "Bolha", "Guitarra", "Unicórnio",
   "Pipoca", "Oceano", "Montanha", "Sussurro", "Bigode", "Nuvem", "Chapéu",
+  "Gato", "Cachorro", "Pássaro", "Leão", "Macaco", "Sapo", "Borboleta",
+  "Sorvete", "Pizza", "Bolo", "Biscoito", "Maçã", "Banana",
+  "Carro", "Avião", "Barco", "Casa", "Lápis", "Livro", "Bola",
+  "Praia", "Floresta", "Rio", "Arco-íris", "Vulcão",
+  "Fada", "Bruxa", "Gigante", "Sereia", "Pirata", "Herói", "Vilão",
+  "Correr", "Pular", "Cantar", "Sonhar", "Desenhar",
+  "Sol", "Lua", "Trovão", "Relâmpago", "Amigo", "Família"
 ];
 
 const shareText = {
@@ -36,6 +42,7 @@ const CrazyStory = ({ activity }) => {
     resetTimer,
   } = usePausableTimer({
     initialTime: 300, // 5 minutos
+    pauseInterval: 0,
     onFinish: () => setIsFinished(true),
   });
 

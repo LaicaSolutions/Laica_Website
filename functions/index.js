@@ -14,7 +14,7 @@ exports.redirectToActivity = functions.https.onRequest((request, response) => {
   // Pega a URL base da configuração de ambiente.
   // (como configurar) => firebase functions:config:set laica.base_url="https://site-da-laica.web.app".
   //use firebase functions:config:get para pegar o valor
-  const baseUrl = 'https://site-da-laica.web.app';
+  const baseUrl = 'https://laicagalaxia.com.br';
 
   if (!baseUrl) {
     console.error("A variável de ambiente 'laica.base_url' não está configurada.");

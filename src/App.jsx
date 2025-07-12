@@ -11,6 +11,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CommunityPopup from './components/CommunityPopup';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './routes';
+import AnalyticsTracker from './components/AnalyticsTracker';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -41,6 +42,7 @@ function App() {
       
       <BrowserRouter>
       <Navbar />
+      <AnalyticsTracker />
       
         <AppRoutes />
       </BrowserRouter>

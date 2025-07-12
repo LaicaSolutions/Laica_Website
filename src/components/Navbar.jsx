@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaRocket } from 'react-icons/fa';
+import { logAnalyticsEvent } from '../services/analytics';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('hero');
@@ -26,7 +27,7 @@ const Navbar = () => {
 
   const navItemsAtividades = [
     {id: 'atividadesInicio', label: 'INICIO'},
-    {id: 'atividadesTv', label: 'GALERIA INTERGALACTICA'}
+    {id: 'atividadesTv', label: 'GALERIA GALATICA'},
   ];
 
   useEffect(() => {
@@ -51,6 +52,10 @@ const Navbar = () => {
 
   // Rola para a seção (na mesma página)
   const scrollToSection = (id) => {
+  logAnalyticsEvent('select_content', {
+    content_type: 'navbar_scroll',
+    item_id: id,
+  });
   if (id === 'event') {
     navigate('/evento/missao-presenca');
   } else {
@@ -65,6 +70,10 @@ const Navbar = () => {
 
   // Vai para a home e depois rola até a seção
   const goToSectionFromOtherPage = (id) => {
+  logAnalyticsEvent('select_content', {
+    content_type: 'navbar_navigate',
+    item_id: id,
+  });
   if (id === 'event') {
     navigate('/evento/missao-presenca');
   }else if (id === 'atividadesInicio') {
@@ -109,8 +118,11 @@ const Navbar = () => {
 
           {/* Botão “Se junte à missão” — só aparece se a pessoa estiver na rota raiz */}
           {isHome && (
-            <button 
-              onClick={() => navigate('/atividades')}
+            <button
+              onClick={() => {
+                logAnalyticsEvent('select_content', { content_type: 'cta', item_id: 'decolar_navbar' });
+                navigate('/atividades');
+              }}
               className="bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0D1B2A] font-bold py-2 px-6 rounded transition-all duration-300 font-poppins flex items-center"
             >
               <FaRocket className="mr-2" /> Decolar
@@ -153,8 +165,11 @@ const Navbar = () => {
           ))}
 
             {isHome && (
-              <button 
-                onClick={() => navigate('/atividades')}
+              <button
+                onClick={() => {
+                  logAnalyticsEvent('select_content', { content_type: 'cta', item_id: 'decolar_navbar_mobile' });
+                  navigate('/atividades');
+                }}
                 className="bg-[#FFC857] hover:bg-[#FFC857]/90 text-[#0D1B2A] font-bold py-2 px-6 rounded transition-all duration-300 font-poppins flex items-center w-full justify-center mt-4"
               >
                 <FaRocket className="mr-2" /> Decolar

@@ -1,9 +1,12 @@
 import React from 'react';
 import { Rocket, Users, Clock, Gamepad2, ArrowLeft, Play } from 'lucide-react';
+import { logAnalyticsEvent } from '../../services/analytics';
 
 /**
  * Helper component para os itens de informação da missão.
  */
+
+/*
 const InfoItem = ({ icon, label, value }) => (
   <div className="flex items-center gap-3">
     <div className="text-neon-cyan">{icon}</div>
@@ -13,6 +16,8 @@ const InfoItem = ({ icon, label, value }) => (
     </div>
   </div>
 );
+*/
+
 
 /**
  * Uma tela de início de atividade com visual retrô dos anos 80, inspirada em fliperamas.
@@ -26,7 +31,8 @@ const InfoItem = ({ icon, label, value }) => (
  * @param {function} props.onGoBack - Callback para o botão "Voltar".
  */
 export function StartScreen({
-  missionName = "INICIAR DESAFIO",
+  missionName,
+  activityId,
   neonColor = '#00ffff', // Ciano neon como padrão
   onStart,
   onGoBack,
@@ -36,6 +42,25 @@ export function StartScreen({
     //textShadow: `0 0 5px ${neonColor}, 0 0 10px ${neonColor}, 0 0 20px ${neonColor}, 0 0 40px ${neonColor}`,
   };*/}
   
+  const handleStart = () => {
+    logAnalyticsEvent('select_content', {
+      content_type: 'button',
+      item_id: 'start_challenge',
+      mission_name: missionName,
+      activity_id: activityId,
+    });
+    onStart();
+  };
+
+  const handleGoBack = () => {
+    logAnalyticsEvent('select_content', {
+      content_type: 'button',
+      item_id: 'go_back_from_challenge',
+      mission_name: missionName,
+      activity_id: activityId,
+    });
+    onGoBack();
+  };
 
   return (
     <div className="font-pixel  bg-[#0d0d1a] text-white flex flex-col items-center justify-center p-4 overflow-hidden relative">
@@ -45,7 +70,7 @@ export function StartScreen({
       <div className="relative z-10 text-center w-full max-w-2xl mt-10">
         {/* Título com efeito neon */}
         <h1 className={`text-4xl md:text-6xl bg-clip-text text-transparent uppercase bg-gradient-to-r ${neonColor}`} >
-          {missionName}
+          INICIAR DESAFIO
         </h1>
 
         {/* Painel de Informações da Missão */}
@@ -65,7 +90,7 @@ export function StartScreen({
         {/* Botões de Ação */}
         <div className="flex flex-col items-center gap-4 mt-8 md:mt-10">
           <button
-            onClick={onStart}
+            onClick={handleStart}
             className="h-16 w-16 md:h-20 md:w-20 rounded-full flex items-center justify-center bg-[#FF4F87] text-black border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 "
           >
             <Play className="h-5 w-5 md:h-7 md:w-7 fill-black" />
@@ -73,7 +98,7 @@ export function StartScreen({
 
             {/*{onGoBack && (
             <button
-              onClick={onGoBack}
+              onClick={handleGoBack}
               className="flex items-center gap-2 text-white/70 hover:text-white hover:text-neon-cyan transition-colors duration-200 mt-4"
             >
               <ArrowLeft size={16} />

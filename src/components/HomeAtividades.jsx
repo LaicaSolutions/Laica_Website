@@ -3,6 +3,7 @@ import { PlayIcon, Rocket, User, UserIcon, Users } from 'lucide-react';
 import { IntroVideo } from './IntroVideo';
 import { CassetteTape } from './CasseteTatpe';
 import { activities } from '../data/activities';
+import { logAnalyticsEvent } from '../services/analytics';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs';
 
 export default function HomeAtividades() {
@@ -20,9 +21,17 @@ export default function HomeAtividades() {
     .filter((activity) => (filter === 'all' ? true : activity.type === filter))
     .sort((a, b) => difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]);
 
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+    logAnalyticsEvent('select_content', {
+      content_type: 'activity_filter',
+      item_id: newFilter,
+    });
+  };
+
   return (
     <>
-      <IntroVideo />
+      {/*<IntroVideo />*/}
       <main className="min-h-screen p-4 sm:p-8">
         <div className="container mx-auto">
           <header className="text-center mt-16 mb-8 md:mt-24 md:mb-16">
@@ -45,14 +54,14 @@ export default function HomeAtividades() {
                 <TabsList className="bg-black/70 border-2 border-primary p-1 rounded-lg">
                   <TabsTrigger
                     value="all"
-                    onClick={() => setFilter('all')}
+                    onClick={() => handleFilterChange('all')}
                     className="px-4 py-2 font-code uppercase text-primary transition-colors rounded-md hover:bg-primary/20 data-[state=active]:bg-pink-500 data-[state=active]:text-background"
                   >
                     Todas
                   </TabsTrigger>
                   <TabsTrigger
                     value="solo"
-                    onClick={() => setFilter('Solo')}
+                    onClick={() => handleFilterChange('Solo')}
                     className="px-4 py-2 font-code uppercase text-primary transition-colors rounded-md hover:bg-primary/20 data-[state=active]:bg-pink-500 data-[state=active]:text-background"
                   >
                     <div className="flex items-center justify-center gap-2">
@@ -62,7 +71,7 @@ export default function HomeAtividades() {
                   </TabsTrigger>
                   <TabsTrigger
                     value="duo"
-                    onClick={() => setFilter('Duo')}
+                    onClick={() => handleFilterChange('Duo')}
                     className="px-4 py-2 font-code uppercase text-primary transition-colors rounded-md hover:bg-primary/20 data-[state=active]:bg-pink-500 data-[state=active]:text-background"
                   >
                     <div className="flex items-center justify-center gap-2">

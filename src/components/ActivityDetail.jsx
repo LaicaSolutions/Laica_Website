@@ -7,6 +7,7 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Play, Pause, Volume2, VolumeX, Zap, User, Users, ArrowLeft } from 'lucide-react';
 // Importa o renderizador de componentes dinâmicos
+import { logAnalyticsEvent } from '../services/analytics';
 import ActivityComponentRenderer from './activity-components/ActivityComponentRenderer';
 
 // Componente principal da página de detalhe da atividade
@@ -39,6 +40,13 @@ const ActivityDetail = () => {
 
   // Função para tocar ou pausar o áudio
   const handlePlayMission = () => {
+    logAnalyticsEvent('select_content', {
+      content_type: 'audio_control',
+      item_id: isPlaying ? 'pause' : 'play',
+      activity_id: activity.id,
+      activity_name: activity.name,
+    });
+
     if (isPlaying) {
       audioRef.current?.pause();
     } else {

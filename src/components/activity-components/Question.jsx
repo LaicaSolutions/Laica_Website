@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { logAnalyticsEvent } from '../../services/analytics';
 import { SharePrompt } from './SharePrompt';
 
 const defaultQuestions = [
@@ -12,12 +13,24 @@ const Question = ({ questions = defaultQuestions, sharePrompt }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const startTimeRef = useRef(Date.now());
+
+  // Dispara um evento quando a sequência de perguntas começa
+  useEffect(() => {
+    logAnalyticsEvent('question_sequence_start', {
+      question_count: questions.length,
+    });
+  }, [questions.length]);
 
   const handleNavigation = (newIndex) => {
     // Se o usuário clicar em "próximo" na última pergunta, finaliza.
     if (newIndex >= questions.length) {
       setIsFading(true);
       setTimeout(() => {
+        const durationInSeconds = (Date.now() - startTimeRef.current) / 1000;
+        logAnalyticsEvent('question_sequence_complete', {
+          duration_seconds: Math.round(durationInSeconds),
+        });
         setIsFinished(true);
       }, 150);
       return;

@@ -6,7 +6,6 @@ import EventLandingPage from './components/EventLandingPage';
 import ActivityDetail from './components/ActivityDetail';
 
 
-
 const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Home />} />

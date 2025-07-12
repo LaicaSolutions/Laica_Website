@@ -45,7 +45,7 @@ const ActivityComponentRenderer = ({ componentType, ...props }) => {
 
   //Lógica de renderização condicional
   if (!hasStarted) {
-    return <StartScreen neonColor={props.activity?.color} onStart={() => setHasStarted(true)}  />;
+    return <StartScreen neonColor={props.activity?.color} missionName={props.activity?.name} activityId={props.activity?.id} onStart={() => setHasStarted(true)}  />;
   }
 
 
