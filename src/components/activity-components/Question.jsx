@@ -2,12 +2,29 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { logAnalyticsEvent } from '../../services/analytics';
 import { SharePrompt } from './SharePrompt';
+import { Volume2 } from 'lucide-react'; 
+
 
 const defaultQuestions = [
   "Se você pudesse ter qualquer superpoder, qual seria e por quê?",
   "Qual é a sua memória mais feliz?",
   "Se você pudesse viajar para qualquer lugar do universo, para onde iria?",
 ];
+
+// 2. Função para ler o texto em voz alta
+const speakWord = (text) => {
+  if ('speechSynthesis' in window) {
+    // Para qualquer fala pendente para não sobrepor
+    window.speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'pt-BR'; // Garante a pronúncia correta em português
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+  } else {
+    console.error('Seu navegador não suporta a síntese de voz.');
+  }
+};
 
 const Question = ({ questions = defaultQuestions, sharePrompt }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -66,6 +83,17 @@ const Question = ({ questions = defaultQuestions, sharePrompt }) => {
 
   return (
     <div className="font-pixel text-center p-6 md:p-8 rounded-lg max-w-2xl mx-auto bg-black/50 border-4 border-cyan-400 backdrop-blur-sm text-white flex flex-col justify-between min-h-[300px]">
+        {/* 3. Adicionar o ícone de som */}
+                <div 
+                  className="absolute top-2 right-2 text-cyan-400/70 hover:text-cyan-400 transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                   speakWord(questions[currentIndex]);
+                    
+                  }}
+                >
+                  <Volume2 size={30} />
+                </div>
       <div className="flex-grow flex items-center justify-center">
         {hasQuestions ? (
           <p className={`text-xl md:text-2xl leading-relaxed transition-opacity duration-150 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
@@ -74,6 +102,7 @@ const Question = ({ questions = defaultQuestions, sharePrompt }) => {
         ) : (
           <p className="text-2xl uppercase">Nenhuma pergunta encontrada.</p>
         )}
+        
       </div>
 
       {hasQuestions && (

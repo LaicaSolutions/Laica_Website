@@ -26,6 +26,20 @@ const shareText = {
       link: ''
   }
 
+// 2. Função para ler o texto em voz alta
+const speakWord = (text) => {
+  if ('speechSynthesis' in window) {
+    // Para qualquer fala pendente para não sobrepor
+    window.speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'pt-BR'; // Garante a pronúncia correta em português
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+  } else {
+    console.error('Seu navegador não suporta a síntese de voz.');
+  }
+};
 
 
 const CrazyStory = ({ activity }) => {
@@ -53,6 +67,7 @@ const CrazyStory = ({ activity }) => {
       if (elapsedTime > 0 && elapsedTime % 30 === 0) {
         const newWord = crazyWords[Math.floor(Math.random() * crazyWords.length)];
         setCurrentWord(newWord);
+        speakWord(newWord);
       }
     }
   }, [timeRemaining, isActive]);
