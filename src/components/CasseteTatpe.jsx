@@ -80,26 +80,41 @@ export function CassetteTape({ activity }) {
           </div>
 
           {/* Seção que simula a parte central de uma fita cassete. */}
-          <div className="bg-white/10 rounded p-2 text-center text-gray-200">
-            {/* Simulação dos rolos (spools) da fita. */}
-            <div className="flex justify-around items-center h-16">
-              <div className="w-10 h-10 bg-black/50 rounded-full border-2 border-white/20 flex items-center justify-center">
-                <div className="w-3 h-3 bg-white rounded-full" />
+          <div className="relative bg-white/10 rounded p-4 text-center text-gray-200 overflow-hidden">
+            {/* Imagem de fundo, se existir */}
+            {activity.thumbnailImg && (
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${activity.thumbnailImg})` }}
+              />
+            )}
+            {/* Sobreposição para garantir a legibilidade do conteúdo sobre a imagem */}
+            {activity.thumbnailImg && (
+              <div className="absolute inset-0 bg-black/50" />
+            )}
+
+            {/* Conteúdo da fita (rolos e texto) */}
+            <div className="relative">
+              {/* Simulação dos rolos (spools) da fita. */}
+              <div className="flex justify-around items-center h-24">
+                <div className="w-12 h-12 bg-black/50 rounded-full border-2 border-white/20 flex items-center justify-center">
+                  <div className="w-4 h-4 bg-white rounded-full" />
+                </div>
+                <div className="w-12 h-12 bg-black/50 rounded-full border-2 border-white/20 flex items-center justify-center">
+                  <div className="w-4 h-4 bg-white rounded-full" />
+                </div>
               </div>
-              <div className="w-10 h-10 bg-black/50 rounded-full border-2 border-white/20 flex items-center justify-center">
-                <div className="w-3 h-3 bg-white rounded-full" />
-              </div>
+              {/* Texto decorativo com o ID da atividade, imitando uma etiqueta de cassete. */}
+              <p className="mt-2 text-xs font-code tracking-widest text-purple-200">LADO - A / LAICA-M-0{activity.id}</p>
             </div>
-            {/* Texto decorativo com o ID da atividade, imitando uma etiqueta de cassete. */}
-            <p className="mt-2 text-xs font-code tracking-widest text-purple-200">LADO - A / LAICA-M-0{activity.id}</p>
           </div>
 
           {/* Rodapé do card com a chamada para ação "Load Mission". */}
-          <div className="text-center mt-4">
+          {/*<div className="text-center mt-4">
             <p className="font-body text-purple-200 group-hover:text-white transition-colors flex items-center justify-center">
               Tocar a fita <PlayIcon className="ml-2 h-4 w-4" />
             </p>
-          </div>
+          </div>*/}
         </div>
       </div>
     </Link>

@@ -11,6 +11,7 @@ export const activities = [
     missionStory: 'Você sabia que eu já vivi muuuitas aventuras incríveis pelo espaço? Visitei planetas gelados, corri atrás de cometas, dancei com alienígenas músicos e até tomei sorvete de nuvem rosa num asteroide flutuante! Hoje, eu quero te mostrar algumas das minhas lembranças favoritas. Só que tem um detalhe... essas memórias estão todas embaralhadas! Preciso da sua ajuda para montar os quebra-cabeças das minhas aventuras! Cada imagem é uma história que vivi Tá preparado(a) pra montar essas lembranças espaciais comigo? Vamos embaralhar, encaixar e se divertir juntos!',
     audioSrc: '/assets/audio/activities/MemoriasDaLaica.wav',
     componentType: 'puzzle',
+    thumbnailImg: '/assets/images/capa_fitas/memoriasdalaica.png', 
     
   },
   {
@@ -23,6 +24,7 @@ export const activities = [
     missionStory: 'Tenho uma história muuuito curiosa pra te contar… Em uma das minhas viagens intergalácticas, fui enviada para investigar o planeta Morphara. Quando pousei por lá, achei tudo meio estranho: o lugar parecia vazio, sem nenhum ser vivo por perto... Só tinha um monte de objetos jogados — caixas, almofadas, lanternas... parecia uma bagunça abandonada!Mas adivinha? Quando voltei pra minha nave... tinha mais objetos do que antes! Achei aquilo esquisito e fui investigar. Foi quando toquei numa bola brilhante… e PUF! Ela se transformou em um ser gelatinoso, superfofo e colorido: um Mimetar! Eles são alienígenas muito tímidos, que se disfarçam de coisas comuns pra se protegerem.Desde então, sempre que estou em algum lugar diferente — como uma casa, um parque ou até um restaurante — fico de olho… Vai que tem um Mimetar escondido por perto! Agora, preciso da sua ajuda! Vamos jogar um Bingo Espacial e procurar objetos ao nosso redor. Um deles pode ser, na verdade… um Mimetar disfarçado! Você me ajuda nessa missão de detetive intergaláctico?',
     audioSrc: '/assets/audio/activities/CacaEspacial.wav',
     componentType: 'spaceHunt',
+    thumbnailImg: '/assets/images/capa_fitas/cacaespacial.png', 
    
   },
   {
@@ -44,6 +46,7 @@ export const activities = [
       '8n5ku9UKe2o',
       'XBjMU8Rr8AY'
     ],
+    thumbnailImg: '/assets/images/capa_fitas/SincroniaRitmo.png', 
   },
   {
     id: '4',
@@ -67,6 +70,7 @@ export const activities = [
     audioSrc: '/assets/audio/activities/Estatua.wav',
     componentType: 'video',
     videoId: '0nsXeO-PilY',
+    thumbnailImg: '/assets/images/capa_fitas/Estatua.png',
   },
   {
     id: '6',
@@ -75,7 +79,7 @@ export const activities = [
     difficulty: 'hard',
     color: 'from-red-600 to-pink-500',
     description: 'A criança vai ter que refletir o que te torna calma e criar o kit da emergência, o espaço para ela se acalmar',
-    missionStory: 'A criança vai ter que refletir o que te torna calma e criar o kit da emergência, o espaço para ela se acalmar',
+    missionStory: '',
     audioSrc: null,
     componentType: 'video',
     videoId: 'b3KMNIowUSo',
@@ -90,6 +94,7 @@ export const activities = [
     missionStory: 'Oi, comandantes! \n Hoje quero mostrar pra vocês um jeito diferente de conversar… desenhando! \n Em uma das minhas viagens, conheci os Drelks, do planeta Trivonn. Eles não falam com palavras — eles se comunicam desenhando, um de cada vez. \n Cada linha era como dizer: "eu te entendo." \n Agora é a sua vez! \n Sorteiei uma frase. Mas... shhh! Cada um guarda sua ideia em segredo! \n Quando o cronômetro começar, um desenha por alguns segundos…Quando ele pausar, passa pro outro continuar.\n Sem falar, só com o desenho.\n Linha por linha, ideia por ideia, vocês vão criar algo novo e incrível! \n Vamos desenhar uma conexão?',
     audioSrc: '/assets/audio/activities/LinhasEncontram.wav',
     componentType: 'fourHandsDrawing',
+    thumbnailImg: '/assets/images/capa_fitas/LinhasEncontram.png',
   },
   {
     id: '8',
@@ -110,6 +115,7 @@ export const activities = [
         "Qual é a sua lembrança favorita que temos juntos?",
         "Você prefere viver no fundo do mar ou no espaço?",
     ],
+    thumbnailImg: '/assets/images/capa_fitas/PerguntasTripulacao.png',
    
   },
   {
@@ -127,7 +133,8 @@ export const activities = [
       description : 'Um desenho ou audio da historia criada! Conte sua experiência e inspire outras famílias!',
       note : 'As histórias mais criativas podem aparecer na Galeria Galáctica !',
       whatsappMessage : 'Olha só o que criamos com a Laica!',
-    }
+    },
+    thumbnailImg: '/assets/images/capa_fitas/HistoriaMaluca.png',
   },
   {
     id: '10',
@@ -148,6 +155,7 @@ export const activities = [
       'Então bora brincar e descobrir o universo do outro de um jeito divertidamente diferente! ✨🎭',
     audioSrc: '/assets/audio/activities/EntrevistaIntergalactica.wav',
     componentType: 'character',
+    thumbnailImg: '/assets/images/capa_fitas/EntrevistaIntergalactica.png',
   },
   {
     id: '11',
@@ -167,6 +175,7 @@ export const activities = [
 'Preparados para construirem um mundo onde tudo é possível?',
     audioSrc: '/assets/audio/activities/MonteSeuMundo.wav',
     componentType: 'buildWorld',
+    thumbnailImg: '/assets/images/capa_fitas/MonteSeuMundo.png',
   },
   {
     id: '12',
@@ -187,5 +196,8 @@ export const activities = [
 'Vamos lá? Estou aqui torcendo pra esse momento ser inesquecível! 💫',
     audioSrc: '/assets/audio/activities/NossosPlanos.wav',
     componentType: 'makingPlan',
+    thumbnailImg: '/assets/images/capa_fitas/NossoPlanos.png',
   },
+  
+  
 ]
