@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Feather, Flame, PlayIcon, Skull, User, Users, ZapIcon } from 'lucide-react';
-import { logAnalyticsEvent } from '../services/analytics';
-import { Badge } from './ui/badge';
+import { logAnalyticsEvent } from '../../services/analytics';
+import { Badge } from '../ui/badge';
 
 // Componente CassetteTape: Renderiza um card estilizado como uma fita cassete para uma atividade.
 // Recebe um objeto `activity` como propriedade, contendo os detalhes da missão.

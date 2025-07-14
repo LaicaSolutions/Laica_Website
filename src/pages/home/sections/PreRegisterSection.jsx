@@ -3,7 +3,7 @@ import { FaInstagram, FaLinkedin, FaWhatsapp, FaEnvelope, FaPaperPlane, FaRocket
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { salvarPreCadastro } from '../services/preCadastroService';
+import { salvarPreCadastro } from '../../../services/preCadastroService';
 
 gsap.registerPlugin(ScrollTrigger);
 

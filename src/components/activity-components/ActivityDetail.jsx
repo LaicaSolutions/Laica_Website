@@ -2,13 +2,13 @@
 import { useContext, useState, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { activities } from '../data/activities';
-import { Button } from './ui/button';
-import { Badge } from './ui/badge';
+import { activities } from '../../data/activities';
+import { Button } from '../ui/button';
+import { Badge } from '../ui/badge';
 import { Play, Pause, Volume2, VolumeX, Zap, User, Users, ArrowLeft, BookOpen, BookUp, RefreshCw } from 'lucide-react';
 // Importa o renderizador de componentes dinâmicos
-import { logAnalyticsEvent } from '../services/analytics';
-import ActivityComponentRenderer from './activity-components/ActivityComponentRenderer';
+import { logAnalyticsEvent } from '../../services/analytics';
+import ActivityComponentRenderer from './ActivityComponentRenderer';
 
 // Componente principal da página de detalhe da atividade
 const ActivityDetail = () => {

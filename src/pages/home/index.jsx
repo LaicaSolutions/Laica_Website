@@ -1,13 +1,13 @@
 // src/pages/Home.jsx
 import React from 'react';
-import HeroSection from '../sections/HeroSection';
-import ProblemSection from '../sections/ProblemSection';
-import SolutionSection from '../sections/SolutionSection';
-import TeamSection from '../sections/TeamSection';
-import TimelineSection from './TimelineSection';
-import ContactSection from '../sections/ContactSection';
-import SectionDivider from './SectionDivider';
-import CommunityPopup from './CommunityPopup';
+import HeroSection from './sections/HeroSection';
+import ProblemSection from './sections/ProblemSection';
+import SolutionSection from './sections/SolutionSection';
+import TeamSection from './sections/TeamSection';
+
+import ContactSection from './sections/ContactSection';
+import SectionDivider from '../../components/SectionDivider';
+import CommunityPopup from '../../components/CommunityPopup';
 const Home = () => {
   return (
     <main className="relative z-10">

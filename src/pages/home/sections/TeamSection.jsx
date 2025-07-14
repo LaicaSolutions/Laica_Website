@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
-import TeamMemberCard from '../components/TeamMemberCard';
-import { useTeamSectionAnimations } from '../hooks/useTeamSectionAnimations';
-import teamMembers from '../data/teamData'; // valores do time
+import TeamMemberCard from '../../../components/TeamMemberCard';
+import { useTeamSectionAnimations } from '../../../hooks/useTeamSectionAnimations';
+import teamMembers from '../../../data/teamData'; // valores do time
 
 
 const TeamSection = () => {

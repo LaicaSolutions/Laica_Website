@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaRocket } from 'react-icons/fa';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useSolutionAnimations } from '../hooks/useSolutionAnimations';
+import { useSolutionAnimations } from '../../../hooks/useSolutionAnimations';
 
 gsap.registerPlugin(ScrollTrigger);
 

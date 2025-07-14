@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { FaRocket, FaArrowDown } from 'react-icons/fa';
-import { animateText } from '../utils/animations';
-import { SECTION_IDS } from '../utils/sectionIds';
-import RocketAnimation from '../components/ui/RocketAnimation';
-import { heroTexts } from '../utils/content/heroContent';
+import { animateText } from '../../../utils/animations';
+import { SECTION_IDS } from '../../../utils/sectionIds';
+import RocketAnimation from '../../../components/ui/RocketAnimation';
+import { heroTexts } from '../../../utils/content/heroContent';
 import gsap from 'gsap';
 
 const HeroSection = () => {

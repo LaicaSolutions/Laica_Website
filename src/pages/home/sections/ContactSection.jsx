@@ -1,8 +1,8 @@
 import { useRef } from 'react';
-import useContactAnimations from '../hooks/useContactAnimations';
-import ContactForm from '../components/ContactForm';
-import SocialLinks from '../components/SocialLinks';
-import MissionControlInfo from '../components/MissionControlInfo';
+import useContactAnimations from '../../../hooks/useContactAnimations';
+import ContactForm from '../../../components/ContactForm';
+import SocialLinks from '../../../components/SocialLinks';
+import MissionControlInfo from '../../../components/MissionControlInfo';
 
 const ContactSection = () => {
   const sectionRef = useRef(null);

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { PlayIcon, Rocket, User, UserIcon, Users } from 'lucide-react';
-import { IntroVideo } from './IntroVideo';
-import { CassetteTape } from './CasseteTatpe';
-import { activities } from '../data/activities';
-import { logAnalyticsEvent } from '../services/analytics';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs';
+import { IntroVideo } from '../../components/IntroVideo';
+import { CassetteTape } from '../../components/activity-components/CasseteTape';
+import { activities } from '../../data/activities';
+import { logAnalyticsEvent } from '../../services/analytics';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '../../components/ui/tabs';
 
 export default function HomeAtividades() {
   const [filter, setFilter] = useState('all');

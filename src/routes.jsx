@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import PreRegisterSection from './sections/PreRegisterSection';
-import HomeAtividades from './components/HomeAtividades';
+import Home from './pages/home';
+import PreRegisterSection from './pages/home/sections/PreRegisterSection';
+import HomeAtividades from './pages/activities';
 import EventLandingPage from './components/EventLandingPage';
-import ActivityDetail from './components/ActivityDetail';
+import ActivityDetail from './components/activity-components/ActivityDetail';
 
 
 const AppRoutes = () => (

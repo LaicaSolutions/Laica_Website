@@ -26,8 +26,8 @@ const Navbar = () => {
   ];
 
   const navItemsAtividades = [
-    {id: 'atividadesInicio', label: 'INICIO'},
-    {id: 'atividadesTv', label: 'GALERIA GALATICA'},
+    //{id: 'atividadesInicio', label: 'INICIO'},
+    //{id: 'atividadesTv', label: 'GALERIA GALATICA'},
   ];
 
   useEffect(() => {

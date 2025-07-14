@@ -5,8 +5,8 @@ import { FaTabletAlt, FaLaptop } from 'react-icons/fa';
 // Biblioteca de animações
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import PlanetDecor from '../components/ui/PlanetDecor';
-import DeviceWithAvatar from '../components/ui/DeviceWithAvatar';
+import PlanetDecor from '../../../components/ui/PlanetDecor';
+import DeviceWithAvatar from '../../../components/ui/DeviceWithAvatar';
 
 // Registra o plugin de scroll
 gsap.registerPlugin(ScrollTrigger);
