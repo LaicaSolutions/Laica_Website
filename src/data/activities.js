@@ -12,6 +12,7 @@ export const activities = [
     audioSrc: '/assets/audio/activities/MemoriasDaLaica.wav',
     componentType: 'puzzle',
     thumbnailImg: '/assets/images/capa_fitas/memoriasdalaica.png', 
+    enabled: true
     
   },
   {
@@ -25,6 +26,7 @@ export const activities = [
     audioSrc: '/assets/audio/activities/CacaEspacial.wav',
     componentType: 'spaceHunt',
     thumbnailImg: '/assets/images/capa_fitas/cacaespacial.png', 
+    enabled: true
    
   },
   {
@@ -47,6 +49,7 @@ export const activities = [
       'XBjMU8Rr8AY'
     ],
     thumbnailImg: '/assets/images/capa_fitas/SincroniaRitmo.png', 
+    enabled: true
   },
   {
     id: '4',
@@ -58,6 +61,7 @@ export const activities = [
     missionStory: 'Vai ter uma frase do que a laica precisa para concluir a missão e a criança vai ter que desenhar isso',
     audioSrc: null,
     componentType: 'phrase',
+    enabled: false
   },
   {
     id: '5',
@@ -71,6 +75,7 @@ export const activities = [
     componentType: 'video',
     videoId: '0nsXeO-PilY',
     thumbnailImg: '/assets/images/capa_fitas/Estatua.png',
+    enabled: false
   },
   {
     id: '6',
@@ -83,6 +88,7 @@ export const activities = [
     audioSrc: null,
     componentType: 'video',
     videoId: 'b3KMNIowUSo',
+    enabled : false
   },
   {
     id: '7',
@@ -95,6 +101,7 @@ export const activities = [
     audioSrc: '/assets/audio/activities/LinhasEncontram.wav',
     componentType: 'fourHandsDrawing',
     thumbnailImg: '/assets/images/capa_fitas/LinhasEncontram.png',
+    enabled: false
   },
   {
     id: '8',
@@ -116,6 +123,7 @@ export const activities = [
         "Você prefere viver no fundo do mar ou no espaço?",
     ],
     thumbnailImg: '/assets/images/capa_fitas/PerguntasTripulacao.png',
+    enabled: true
    
   },
   {
@@ -135,6 +143,7 @@ export const activities = [
       whatsappMessage : 'Olha só o que criamos com a Laica!',
     },
     thumbnailImg: '/assets/images/capa_fitas/HistoriaMaluca.png',
+    enabled: true
   },
   {
     id: '10',
@@ -156,6 +165,7 @@ export const activities = [
     audioSrc: '/assets/audio/activities/EntrevistaIntergalactica.wav',
     componentType: 'character',
     thumbnailImg: '/assets/images/capa_fitas/EntrevistaIntergalactica.png',
+    enabled: true
   },
   {
     id: '11',
@@ -176,6 +186,7 @@ export const activities = [
     audioSrc: '/assets/audio/activities/MonteSeuMundo.wav',
     componentType: 'buildWorld',
     thumbnailImg: '/assets/images/capa_fitas/MonteSeuMundo.png',
+    enabled: true
   },
   {
     id: '12',
@@ -197,6 +208,7 @@ export const activities = [
     audioSrc: '/assets/audio/activities/NossosPlanos.wav',
     componentType: 'makingPlan',
     thumbnailImg: '/assets/images/capa_fitas/NossoPlanos.png',
+    enabled: true
   },
   
   

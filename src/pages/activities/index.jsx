@@ -18,7 +18,8 @@ export default function HomeAtividades() {
 
   // 2. Filtra e depois ordena as atividades
   const filteredActivities = activities
-    .filter((activity) => (filter === 'all' ? true : activity.type === filter))
+    .filter((activity) => activity.enabled)
+    .filter((activity) => filter === 'all' || activity.type === filter)
     .sort((a, b) => difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]);
 
   const handleFilterChange = (newFilter) => {

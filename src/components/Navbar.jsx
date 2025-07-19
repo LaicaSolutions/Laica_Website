@@ -20,7 +20,7 @@ const Navbar = () => {
     { id: 'problem', label: 'O Problema' },
     { id: 'solution', label: 'Nossa Solução' },
     { id: 'team', label: 'A Equipe' },
-    { id: 'event', label: 'Nosso Evento' },
+  
     { id: 'contact', label: 'Contato' },
 
   ];
